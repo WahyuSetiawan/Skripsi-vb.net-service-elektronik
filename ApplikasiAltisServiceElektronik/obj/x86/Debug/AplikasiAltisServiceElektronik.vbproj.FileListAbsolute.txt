@@ -1,0 +1,48 @@
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\AplikasiAltisServiceElektronik.exe
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\AplikasiAltisServiceElektronik.pdb
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\AplikasiAltisServiceElektronik.xml
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormCheckAndRepair.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormDaftarKerusakan.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLogin.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormPerbaikan.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormTransaksi.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormJenisKerusakan.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormMenuUtama.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.Resources.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormPelanggan.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormSetttingKeamanan.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.vbproj.GenerateResource.Cache
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.exe
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.xml
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.pdb
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\Database_reprasi.mdb
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\RdlCompile.cache
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\RdlCompile.compiled
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLaporanNota.resources
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\AplikasiAltisServiceElektronik.exe.config
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.vbprojResolveAssemblyReference.cache
+D:\Vmware share\Project-KerusakanKomputer\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLaporanPelanggan.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\AplikasiAltisServiceElektronik.exe.config
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.xml
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.pdb
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\Database_reprasi.mdb
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\AplikasiAltisServiceElektronik.exe
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\AplikasiAltisServiceElektronik.pdb
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\AplikasiAltisServiceElektronik.xml
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.vbprojResolveAssemblyReference.cache
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLaporanPelanggan.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormCheckAndRepair.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormDaftarKerusakan.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLaporanNota.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLogin.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormPerbaikan.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormTransaksi.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormJenisKerusakan.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormMenuUtama.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.Resources.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormPelanggan.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormSetttingKeamanan.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.vbproj.GenerateResource.Cache
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\RdlCompile.cache
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\RdlCompile.compiled
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.exe
