@@ -1,4 +1,6 @@
-﻿Module PublicFunction
+﻿Imports CrystalDecisions.CrystalReports.Engine
+
+Module PublicFunction
     Dim appPathReport As String = AppDomain.CurrentDomain.BaseDirectory.Replace("\bin\Debug\", "") & "\Laporan\"
 
     Function getLaporanPath(ByVal file As String) As String

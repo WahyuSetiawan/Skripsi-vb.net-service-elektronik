@@ -27,25 +27,19 @@
     End Sub
 
     Sub LoadDataTable()
-        Dim baris As Integer = 1
-        Dim myConnection As New OleDbConnection(appPathDatabase)
-        myConnection.Open()
+        Dim pelanggans As List(Of Pelanggan) = Pelanggan.all
 
-        Dim myCommand As New OleDbCommand("select * from pelanggan", myConnection)
-        Dim myReader As OleDbDataReader = myCommand.ExecuteReader
+        For i = 0 To pelanggans.Count - 1
+            Dim pelanggan As Pelanggan = pelanggans.Item(i)
+            Dim baris As Integer = i + 1
 
-        While myReader.Read()
             Me.ListView1.Items.Add(baris)
-            Me.ListView1.Items(baris - 1).SubItems.Add(myReader.GetInt32(myReader.GetOrdinal("id")).ToString)
-            Me.ListView1.Items(baris - 1).SubItems.Add(myReader.GetString(myReader.GetOrdinal("nama")))
-            Me.ListView1.Items(baris - 1).SubItems.Add(myReader.GetString(myReader.GetOrdinal("alamat")))
-            Me.ListView1.Items(baris - 1).SubItems.Add(myReader.GetString(myReader.GetOrdinal("notelepon")))
-            Me.ListView1.Items(baris - 1).SubItems.Add(myReader.GetString(myReader.GetOrdinal("noktp")))
-
-            baris = baris + 1
-        End While
-
-        myConnection.Close()
+            Me.ListView1.Items(baris - 1).SubItems.Add(pelanggan.ID.ToString)
+            Me.ListView1.Items(baris - 1).SubItems.Add(pelanggan.nama)
+            Me.ListView1.Items(baris - 1).SubItems.Add(pelanggan.alamat)
+            Me.ListView1.Items(baris - 1).SubItems.Add(pelanggan.noTelepon)
+            Me.ListView1.Items(baris - 1).SubItems.Add(pelanggan.noKtp)
+        Next
     End Sub
 
 
@@ -64,61 +58,6 @@
             ListView1.Columns.Add("No Telepon")
             ListView1.Columns.Add("No KTP")
         End With
-
-    End Sub
-
-
-    Private Sub tambahPelanggan(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTambah.Click
-        Dim status As Boolean
-        status = True
-
-        If txtNama.Text = "" Then
-            txtNama.Focus()
-        End If
-
-        If txtNoKtp.Text = "" Then
-            txtNoKtp.Focus()
-        End If
-
-
-        If status Then
-            Try
-                Dim myConnection As New OleDbConnection(appPathDatabase)
-                myConnection.Open()
-
-                Dim myCommmand As New OleDbCommand("Insert into pelanggan (nama, alamat, noktp, notelepon) values (@nama, @alamat, @noktp, @notelepon)", myConnection)
-
-                myCommmand.Parameters.AddWithValue("@nama", Trim(txtNama.Text))
-                myCommmand.Parameters.AddWithValue("@alamat", Trim(txtAlamat.Text))
-                myCommmand.Parameters.AddWithValue("@noktp", Trim(txtNoKtp.Text))
-                myCommmand.Parameters.AddWithValue("@notelepon", Trim(txtNoTelepon.Text))
-
-                myCommmand.ExecuteNonQuery()
-
-                Dim id As Integer = LastInsertedID()
-
-                MsgBox("Berhasil menginputkan data pelanggan dengan id : " & id)
-
-                With Me.ListView1
-                    Dim baris As Integer = .Items.Count
-
-                    .Items.Add(baris)
-                    .Items(baris).SubItems.Add(id.ToString)
-                    .Items(baris).SubItems.Add(Trim(txtNama.Text))
-                    .Items(baris).SubItems.Add(Trim(txtAlamat.Text))
-                    .Items(baris).SubItems.Add(Trim(txtNoKtp.Text))
-                    .Items(baris).SubItems.Add(Trim(txtNoTelepon.Text))
-
-                End With
-
-                kosong()
-            Catch ex As Exception
-                MsgBox("Kesalahan dalam penyimpan data pelanggan dengan pesan : " & ex.Message)
-            Finally
-                koneksi.Close()
-            End Try
-
-        End If
     End Sub
 
     Sub kosong()
@@ -129,92 +68,28 @@
         txtNoTelepon.Text = ""
     End Sub
 
-    Private Sub btnUbah_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUbah.Click
-        Dim status As Boolean = True
-
-        If txtNama.Text = "" Then
-            status = False
-        End If
-
-        If txtNoTelepon.Text = "" Then
-            status = False
-        End If
-
-        If status Then
-            Try
-                Dim myConnection As New OleDbConnection(appPathDatabase)
-                myConnection.Open()
-
-                Dim myCommand As New OleDbCommand("update pelanggan set nama = @nama, alamat = @alamat, notelepon = @notelepon, noktp = @noktp where id = @id", myConnection)
-
-                myCommand.Parameters.AddWithValue("@id", Trim(txtID.Text))
-                myCommand.Parameters.AddWithValue("@nama", Trim(txtNama.Text))
-                myCommand.Parameters.AddWithValue("@alamat", Trim(txtAlamat.Text))
-                myCommand.Parameters.AddWithValue("@noktp", Trim(txtNoKtp.Text))
-                myCommand.Parameters.AddWithValue("@notelepon", Trim(txtNoTelepon.Text))
-
-                myCommand.ExecuteNonQuery()
-
-                myConnection.Close()
-
-                MsgBox("Berhasil mengubah data pelanggan")
-
-                Me.ListView1.SelectedItems(0).SubItems(1).Text = Me.txtID.Text
-                Me.ListView1.SelectedItems(0).SubItems(2).Text = Trim(txtNama.Text)
-                Me.ListView1.SelectedItems(0).SubItems(3).Text = Trim(txtAlamat.Text)
-                Me.ListView1.SelectedItems(0).SubItems(4).Text = Trim(txtNoTelepon.Text)
-                Me.ListView1.SelectedItems(0).SubItems(5).Text = Trim(txtNoKtp.Text)
-                kosong()
-            Catch ex As Exception
-                MsgBox("terdapat kesalahan dalam perubahan data pelanggan dengan pesan : " & ex.Message)
-            Finally
-                koneksi.Close()
-            End Try
-        Else
-
-        End If
-    End Sub
-
     Private Sub btnTambah_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTambah.Click
+        If formValidationPelanggan() Then
+            Dim pelanggan As New Pelanggan
 
+            pelanggan.nama = txtNama.Text
+            pelanggan.alamat = txtAlamat.Text
+            pelanggan.noKtp = txtNoKtp.Text
+            pelanggan.noTelepon = txtNoTelepon.Text
+
+            If Not pelanggan.save = -1 Then
+                addListView(pelanggan)
+
+                kosong()
+            Else
+                MsgBox("Tidak dapat memasukan pelanggan baru")
+            End If
+        End If
     End Sub
 
     Private Sub FormPelanggan_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         LoadTable()
         LoadDataTable()
-    End Sub
-
-    Private Sub btnHapus_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHapus.Click
-        Dim id As Integer = Integer.Parse(txtID.Text)
-
-        Dim myConnection As New OleDbConnection(appPathDatabase)
-        myConnection.Open()
-
-        Dim myCommand As New OleDbCommand("select * from pelanggan where id = @id", myConnection)
-
-        cmd.Parameters.AddWithValue("@id", Me.ListView1.SelectedItems(0).SubItems(1).Text.Trim)
-
-        Dim reader As OleDbDataReader = myCommand.ExecuteReader
-        reader.Read()
-
-        If reader.HasRows Then
-            Dim pesanUser As String
-            pesanUser = MsgBox("Yakin Hapus Data Pelanggan Ini?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Peringatan ")
-            If pesanUser = vbYes Then
-                Dim myConnection2 As New OleDbConnection(appPathDatabase)
-                myConnection2.Open()
-
-                Dim command As New OleDbCommand("delete from pelanggan where id = @id", myConnection2)
-
-                command.Parameters.AddWithValue("@id", ListView1.SelectedItems(0).SubItems(1).Text.ToString.Trim)
-                command.ExecuteNonQuery()
-                myConnection2.Close()
-            End If
-        Else
-            MsgBox("Pelanggan " & id & " tidak tersedia!", MsgBoxStyle.Critical, "Peringatan")
-        End If
-
-        myConnection.Close()
     End Sub
 
     Private Sub ListView1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListView1.Click
@@ -251,11 +126,86 @@
         End If
     End Sub
 
-    Private Sub ListView1_SelectedIndexChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListView1.SelectedIndexChanged
-
+    Private Sub btnBatal_Click(sender As Object, e As EventArgs) Handles btnBatal.Click
+        Me.Close()
     End Sub
 
-    Private Sub Panel2_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel2.Paint
+    Private Sub btnHapus_Click_1(sender As Object, e As EventArgs) Handles btnHapus.Click
+        Dim id As Integer = Integer.Parse(txtID.Text)
+        Dim index As Integer = ListView1.FocusedItem.Index
 
+        Dim pelanggan As Pelanggan = Pelanggan.show(Integer.Parse(ListView1.Items(index).SubItems(1).Text))
+        Dim jawab As String = MsgBox("Anda yakin menghapus data pelanggan ini ?", vbYesNo, "Konfirmasi")
+
+        If jawab = vbYes Then
+            If pelanggan Is Nothing Then
+                MsgBox("Data pelanggan tidak ditemukan")
+            Else
+                If pelanggan.delete Then
+                    ListView1.Items(index).Remove()
+
+                    MsgBox("Data Pelanggan telah dihapus")
+                End If
+            End If
+        End If
     End Sub
+
+    Private Sub btnUbah_Click_1(sender As Object, e As EventArgs) Handles btnUbah.Click
+        If formValidationPelanggan() Then
+            Try
+                Dim pelanggan As New Pelanggan
+
+                pelanggan.nama = txtNama.Text
+                pelanggan.alamat = txtAlamat.Text
+                pelanggan.noKtp = txtNoKtp.Text
+                pelanggan.noTelepon = txtNoTelepon.Text
+
+                If pelanggan.update(Integer.Parse(txtID.Text)) Then
+                    MsgBox("Berhasil mengubah data pelanggan")
+
+                    Dim index As Integer = ListView1.FocusedItem.Index
+                    changeListView(index, pelanggan)
+                    kosong()
+                Else
+                    MsgBox("Tidak dapat merubah data pelanggan")
+                End If
+
+            Catch ex As Exception
+                MsgBox("terdapat kesalahan dalam perubahan data pelanggan dengan pesan : " & ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Sub changeListView(index As Integer, pelanggan As Pelanggan)
+        With Me.ListView1
+            .Items(index).SubItems.Add(pelanggan.ID.ToString)
+            .Items(index).SubItems.Add(pelanggan.nama)
+            .Items(index).SubItems.Add(pelanggan.alamat)
+            .Items(index).SubItems.Add(pelanggan.noKtp)
+            .Items(index).SubItems.Add(pelanggan.noTelepon)
+        End With
+    End Sub
+
+    Sub addListView(pelanggan As Pelanggan)
+        With Me.ListView1
+            Dim baris As Integer = .Items.Count + 1
+
+            .Items.Add(baris)
+            .Items(baris).SubItems.Add(pelanggan.ID.ToString)
+            .Items(baris).SubItems.Add(pelanggan.nama)
+            .Items(baris).SubItems.Add(pelanggan.alamat)
+            .Items(baris).SubItems.Add(pelanggan.noKtp)
+            .Items(baris).SubItems.Add(pelanggan.noTelepon)
+        End With
+    End Sub
+
+    Function formValidationPelanggan() As Boolean
+        formValidationPelanggan = True
+
+        If FormIsNull(txtNama, "nama pelanggan") Then GoTo errorResult
+        If FormIsNull(txtNoTelepon, "no telepon") Then GoTo errorResult
+
+errorResult:
+        formValidationPelanggan = False
+    End Function
 End Class

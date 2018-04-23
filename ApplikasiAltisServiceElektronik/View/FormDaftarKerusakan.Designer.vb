@@ -62,6 +62,7 @@ Partial Class FormDaftarKerusakan
         Me.Controls.Add(Me.btnTutup)
         Me.Controls.Add(Me.ListView1)
         Me.Name = "FormDaftarKerusakan"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormDaftarKerusakana"
         Me.ResumeLayout(False)
 

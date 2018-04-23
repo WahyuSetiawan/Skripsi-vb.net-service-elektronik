@@ -1,66 +1,83 @@
 ﻿Imports Microsoft.Reporting.WinForms
 
 Public Class FormPerbaikan
-
     Private formDaftarKerusakan As FormDaftarKerusakan
     Private formMenutUtama As FormMenuUtama
 
     Public idPelanggan As Integer = 0
     Public idDetail As Integer
+    Dim baris As Integer
 
-    Public totalPembayaran As Integer = 0
+    Dim transaksi As Transaksi
 
-    Sub New(ByVal inst As FormDaftarKerusakan, ByVal idPelanggan As Integer)
+    Dim stringSelesai As String = "Cetak Selesai Dan Cetak"
+    Dim stringCetak As String = "Cetak"
+
+    Sub New(ByVal inst As FormDaftarKerusakan, ByVal id As Integer, baris As Integer)
         InitializeComponent()
-
         Me.formDaftarKerusakan = inst
-        Me.idPelanggan = idPelanggan
+        Me.baris = baris
 
-        Me.Text = "Transaksi " + idPelanggan.ToString
-        Try
-            Dim connection As New OleDbConnection(appPathDatabase)
-            connection.Open()
+        kosong()
+        kosongdetail()
+        loadTable()
 
-            Dim cmd1 As New OleDbCommand("SELECT * FROM transaksi_masuk WHERE ID = @id", connection)
+        transaksi = Transaksi.show(id)
 
-            cmd1.Parameters.AddWithValue("@id", idPelanggan)
+        If Not transaksi Is Nothing Then
+            If Not transaksi.pelanggan Is Nothing Then
+                Me.lblNamaPelanggan.Text = transaksi.pelanggan.ID.ToString & " - " & transaksi.pelanggan.nama.ToString
+                Me.idPelanggan = transaksi.pelanggan.ID
+            End If
+            Me.Text = "Transaksi : " & transaksi.id & " /  pelanggan : " & transaksi.pelanggan.ID
 
-            reader = cmd1.ExecuteReader
-            reader.Read()
+            Me.txtCatatan.Text = transaksi.catatan
+            Me.txtKelengkapan.Text = transaksi.kelengkapan
+            Me.txtKeluhan.Text = transaksi.keluhan
+            Me.txtMerek.Text = transaksi.merek
+            Me.txtType.Text = transaksi.type
+            Me.txtSerialNumber.Text = transaksi.serial_number
+            Me.txtTotalHarga.Text = transaksi.totalHarga
+            Me.txtDibayarkan.Text = transaksi.bayar
+            Me.txtSisaPembayaran.Text = transaksi.kembalian
 
-            If reader.HasRows Then
-                Me.txtCatatan.Text = reader.GetString(reader.GetOrdinal("catatan")).ToString.Trim
-                Me.txtKelengkapan.Text = reader.GetString(reader.GetOrdinal("kelengkapan_unit")).ToString.Trim
-                Me.txtKeluhan.Text = reader.GetString(reader.GetOrdinal("keluhan")).ToString.Trim
-                Me.txtNamaBarang.Text = reader.GetString(reader.GetOrdinal("nama_barang")).ToString.Trim
-                Me.txtSerialNumber.Text = reader.GetString(reader.GetOrdinal("serial_number")).ToString.Trim
+            Me.cmbJenisKerusakan.Text = transaksi.jenis_kerusakan
 
-                Me.cmbJenisKerusakan.Text = reader.GetString(reader.GetOrdinal("jenis")).ToString.Trim
+            If Me.transaksi.tanggal_keluar = Nothing Then
+
             Else
-                MsgBox("Tidak Terdapat transaksi")
+                disableAllButton(Me)
+                readOnlyAllTextBox(Me)
+                disableAllCMB(Me)
+                disableAllList(Me)
+
+                btnCetak.Text = stringCetak
+                btnCetak.Enabled = True
             End If
 
-            connection.Close()
-
-            loadTable()
             loadDataTable()
-        Catch ex As Exception
-            MsgBox("Terjadi Kesalahan " + ex.Message)
-        End Try
+        Else
+            Me.Close()
+        End If
     End Sub
 
     Sub New(ByVal inst As FormMenuUtama)
         InitializeComponent()
         Me.formMenutUtama = inst
         Me.Text = "Transaksi Baru"
-        kosong()
+        pertamaJalan()
     End Sub
 
     Sub New(ByVal inst As FormDaftarKerusakan)
         InitializeComponent()
         Me.formDaftarKerusakan = inst
         Me.Text = "Transaksi Baru"
+        pertamaJalan()
+    End Sub
+
+    Sub pertamaJalan()
         kosong()
+        kosongdetail()
         loadTable()
         loadDataTable()
     End Sub
@@ -70,13 +87,15 @@ Public Class FormPerbaikan
         Me.cmbJenisKerusakan.Items.Add("Kerusakan Ringan")
         Me.cmbJenisKerusakan.Items.Add("Kerusakan Sedang")
         Me.cmbJenisKerusakan.Items.Add("Kerusakan Berat")
+
+        If Me.cmbJenisKerusakan.Text = "" Then Me.cmbJenisKerusakan.Text = "Kerusakan Ringan"
     End Sub
 
     Sub kosong()
         Me.txtCatatan.Text = ""
         Me.txtKeluhan.Text = ""
         Me.txtKelengkapan.Text = ""
-        Me.txtNamaBarang.Text = ""
+        Me.txtMerek.Text = ""
         Me.txtSerialNumber.Text = ""
         Me.cmbJenisKerusakan.ResetText()
     End Sub
@@ -106,88 +125,16 @@ Public Class FormPerbaikan
     End Sub
 
     Sub loadDataTable()
-        Dim baris As Integer = 1
-
-        With Me.ListViewDetailTransaksi
-            Dim myConnection As New OleDbConnection(appPathDatabase)
-            myConnection.Open()
-
-            Dim myCommand As New OleDbCommand("select * from detail_transaksi where id_transaksi = @id", myConnection)
-
-            myCommand.Parameters.AddWithValue("@id", idPelanggan)
-
-            Dim myReader As OleDbDataReader = myCommand.ExecuteReader
-
-            While myReader.Read
-                Me.ListViewDetailTransaksi.Items.Add(baris)
-                Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(myReader.GetInt32(myReader.GetOrdinal("id")))
-                Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(myReader.GetString(myReader.GetOrdinal("perihal")))
-                Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(myReader.GetInt32(myReader.GetOrdinal("satuan")))
-                Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(myReader.GetInt32(myReader.GetOrdinal("harga")))
-
-                totalPembayaran = totalPembayaran + myReader.GetInt32(myReader.GetOrdinal("harga"))
-                txtTotalHarga.Text = totalPembayaran
-                baris += 1
-            End While
-
-            myConnection.Close()
-        End With
+        If Not transaksi Is Nothing Then
+            For i = 0 To transaksi.detail_transaksi.Count - 1
+                addColumnListDetail(transaksi.detail_transaksi.Item(i))
+            Next
+            txtTotalHarga.Text = transaksi.totalHarga
+        End If
     End Sub
 
     Private Sub FormCheckAndRepair_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         loadComboBox()
-    End Sub
-
-    Private Sub btnSimpan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim simpan As Boolean = True
-
-        If txtKeluhan.Text.Trim = "" Then
-            txtKeluhan.Focus()
-            simpan = False
-        End If
-
-        If txtNamaBarang.Text.Trim = "" Then
-            txtNamaBarang.Focus()
-            simpan = False
-        End If
-
-        If cmbJenisKerusakan.Text = "" Then
-            cmbJenisKerusakan.Focus()
-            simpan = False
-        End If
-
-
-        If simpan Then
-            Try
-                Dim myConnection As New OleDbConnection(appPathDatabase)
-                myConnection.Open()
-
-                Dim myCommand As New OleDbCommand("INSERT into transaksi_masuk (pelanggan, nama_barang, serial_number, jenis, kelengkapan_unit, keluhan, catatan) values  " & _
-                    "(@pelanggan, @nama_barang, @serial_number, @jenis, @kelengkapan_unit, @keluhan, @catatan)", myConnection)
-
-                myCommand.Parameters.AddWithValue("@pelanggan", idPelanggan.ToString.Trim)
-                myCommand.Parameters.AddWithValue("@nama_barang", txtNamaBarang.Text.ToString.Trim)
-                myCommand.Parameters.AddWithValue("@serial_number", txtSerialNumber.Text.ToString.Trim)
-                myCommand.Parameters.AddWithValue("@jenis", cmbJenisKerusakan.Text.ToString.Trim)
-                myCommand.Parameters.AddWithValue("@kelengkapan_unit", txtKelengkapan.Text.ToString.Trim)
-                myCommand.Parameters.AddWithValue("@keluhan", txtKeluhan.Text.ToString.Trim)
-                myCommand.Parameters.AddWithValue("@catatan", txtCatatan.Text.ToString.Trim)
-
-                myCommand.ExecuteNonQuery()
-
-                myConnection.Close()
-
-                MsgBox("Berhasil memasukan transaksi baru")
-            Catch ex As Exception
-                MsgBox("Terdapat kesahan dalam penyimpanan data " & ex.Message)
-            End Try
-        Else
-
-        End If
-    End Sub
-
-    Private Sub lblNamaPelanggan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblNamaPelanggan.Click
-
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPilihPelanggan.Click
@@ -196,64 +143,43 @@ Public Class FormPerbaikan
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTambahDetail.Click
-        If btnTambahDetail.Text.Trim = "Ubah" Then
+        If formValidationDetail() Then
+            Select Case btnTambahDetail.Text.Trim
+                Case "Ubah"
+                    Dim index As Integer = Me.ListViewDetailTransaksi.FocusedItem.Index()
 
-            Dim connection As New OleDbConnection(appPathDatabase)
-            connection.Open()
+                    Dim detailTransaksi As DetailTransaksi = transaksi.detail_transaksi.Item(index)
 
-            Dim myCommand As New OleDbCommand("update detail_transaksi set perihal = '" & txtPerihal.Text.Trim & "', satuan = " & txtSatuan.Text.Trim & ", harga = " & txtHarga.Text.Trim & " where id = " & idDetail.ToString, connection)
+                    detailTransaksi.perihal = txtPerihal.Text.Trim
+                    detailTransaksi.satuan = txtSatuan.Text.Trim
+                    detailTransaksi.harga = txtHarga.Text.Trim
 
-            myCommand.ExecuteNonQuery()
+                    If transaksi.changeDetailTransaksi(index, detailTransaksi) Then
+                        changeColumnListDetail(index, detailTransaksi)
 
-            totalPembayaran = totalPembayaran - Integer.Parse(Me.ListViewDetailTransaksi.SelectedItems(0).SubItems(4).Text)
+                        txtTotalHarga.Text = transaksi.totalHarga
+                        kosongdetail()
+                    End If
+                Case "Tambah"
+                    Dim detailTransaksi As New DetailTransaksi
 
-            Me.ListViewDetailTransaksi.SelectedItems(0).SubItems(2).Text = txtPerihal.Text.Trim
-            Me.ListViewDetailTransaksi.SelectedItems(0).SubItems(3).Text = txtSatuan.Text.Trim
-            Me.ListViewDetailTransaksi.SelectedItems(0).SubItems(4).Text = txtHarga.Text.Trim
+                    detailTransaksi.perihal = txtPerihal.Text.Trim
+                    detailTransaksi.satuan = txtSatuan.Text.Trim
+                    detailTransaksi.harga = txtHarga.Text.Trim
 
-            totalPembayaran = totalPembayaran + txtHarga.Text
+                    Dim last_id As Integer = Me.transaksi.addDetailTransaksi(detailTransaksi)
 
-            txtTotalHarga.Text = totalPembayaran
+                    If Not last_id = -1 Then
+                        detailTransaksi.id = last_id
+                        addColumnListDetail(detailTransaksi)
 
-            connection.Close()
-        Else
-            Try
-                Dim myConnection As New OleDbConnection(appPathDatabase)
-
-                Dim myCommand As New OleDbCommand("insert into detail_transaksi (id_transaksi, perihal, satuan, harga) values (@id_transaksi, @perihal, @satuan, @harga)", myConnection)
-
-                myCommand.Parameters.AddWithValue("@id_transaksi", idPelanggan)
-                myCommand.Parameters.AddWithValue("@perihal", txtPerihal.Text.Trim)
-                myCommand.Parameters.AddWithValue("@satuan", txtSatuan.Text.Trim)
-                myCommand.Parameters.AddWithValue("@harga", txtHarga.Text.Trim)
-
-                myCommand.ExecuteNonQuery()
-
-                Dim baris As Integer = Me.ListViewDetailTransaksi.Items.Count + 1
-                Dim iddetail As Integer = LastInsertedID()
-
-                Me.ListViewDetailTransaksi.Items.Add(baris)
-                Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(iddetail.ToString)
-                Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(txtPerihal.Text.Trim)
-                Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(txtSatuan.Text.Trim)
-                Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(txtHarga.Text.Trim)
-
-                myConnection.Close()
-
-                totalPembayaran = totalPembayaran + Integer.Parse(txtHarga.Text.Trim)
-
-                txtTotalHarga.Text = totalPembayaran
-
-                kosongdetail()
-            Catch ex As Exception
-                MsgBox("Terdapat masalah dalam penyimpanan database :" & ex.Message)
-            End Try
+                        txtTotalHarga.Text = transaksi.totalHarga
+                        kosongdetail()
+                    Else
+                        MsgBox("Tidak dapat menambahkan detail transaksi")
+                    End If
+            End Select
         End If
-
-    End Sub
-
-    Private Sub ListView1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListViewDetailTransaksi.CacheVirtualItems
-
     End Sub
 
     Private Sub ListView1_SelectedIndexChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListViewDetailTransaksi.Click
@@ -269,49 +195,159 @@ Public Class FormPerbaikan
 
     Private Sub btnHapus_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHapus.Click
         Dim jawab As String = MsgBox("Anda yakin menghapus data detail transaksi ini ?", vbYesNo, "Peringatan ")
+
+        Dim index As Integer = Me.ListViewDetailTransaksi.FocusedItem.Index()
+
         If jawab = vbYes Then
-            Dim myConnection As New OleDbConnection(appPathDatabase)
-            myConnection.Open()
-
-            Dim myCommand As New OleDbCommand("select * from detail_transaksi where id = @id", myConnection)
-            myCommand.Parameters.AddWithValue("@id", ListViewDetailTransaksi.SelectedItems(0).SubItems(1).Text)
-
-            Dim reader As OleDbDataReader = myCommand.ExecuteReader
-            reader.Read()
-
-            If reader.HasRows Then
-                Dim connection2 As New OleDbConnection(appPathDatabase)
-                connection2.Open()
-
-                Dim command As New OleDbCommand("delete from detail_transaksi where id = @id", connection2)
-
-                command.Parameters.AddWithValue("@id", ListViewDetailTransaksi.SelectedItems(0).SubItems(1).Text.Trim)
-
-                command.ExecuteNonQuery()
-
-                connection2.Close()
-
-                ListViewDetailTransaksi.SelectedItems(0).Remove()
+            If transaksi.removeDetailTransaksi(index) Then
+                ListViewDetailTransaksi.Items(index).Remove()
             Else
-                MsgBox("Data detail transaksi tidak ditemukan")
+                MsgBox("Tidak dapat menghapus data Detail Transaksi")
             End If
-            myConnection.Close()
         End If
     End Sub
 
-    Private Sub Label11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label11.Click
-
-    End Sub
-
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCetak.Click
-        FormLaporanNota.Show()
-    End Sub
-
-    Private Sub ListViewDetailTransaksi_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
     Private Sub txtDibayarkan_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDibayarkan.TextChanged
-        txtSisaPembayaran.Text = Integer.Parse(txtTotalHarga.Text) - Integer.Parse(txtDibayarkan.Text)
+        If IsNumeric(txtDibayarkan.Text) And IsNumeric(txtTotalHarga.Text) Then
+            txtSisaPembayaran.Text = Integer.Parse(txtDibayarkan.Text) - Integer.Parse(txtTotalHarga.Text)
+        End If
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnHapus.Click
+        Dim jawab As String = MsgBox("Anda yakin menghapus transaksi ini ? ", vbYesNo, "Peringatan")
+        If jawab = vbYes Then
+            transaksi.delete()
+        End If
+    End Sub
+
+    Private Sub btnUbah_Click(sender As Object, e As EventArgs) Handles btnUbah.Click
+        If formValidation() Then
+            transaksi.id_pelanggan = idPelanggan.ToString.Trim
+            transaksi.merek = txtMerek.Text
+            transaksi.type = txtType.Text
+            transaksi.serial_number = txtSerialNumber.Text
+            transaksi.jenis_kerusakan = cmbJenisKerusakan.Text
+            transaksi.kelengkapan = txtKelengkapan.Text
+            transaksi.keluhan = txtKeluhan.Text
+            transaksi.catatan = txtCatatan.Text
+            transaksi.total = txtTotalHarga.Text
+            transaksi.bayar = 0
+            transaksi.kembalian = 0
+            transaksi.tanggal_keluar = Nothing
+
+            If Me.transaksi.update Then
+                MsgBox("Update data trasaksi berhasil")
+
+                Dim transaksiChange As Transaksi = Transaksi.show(transaksi.id)
+
+                formDaftarKerusakan.changeList(baris, transaksiChange)
+
+                Me.Close()
+            End If
+        End If
+    End Sub
+
+    Private Sub btnCetak_Click(sender As Object, e As EventArgs) Handles btnCetak.Click
+        Select Case btnCetak.Text
+            Case stringSelesai
+                If formValidation() Then
+                    transaksi.id_pelanggan = idPelanggan.ToString.Trim
+                    transaksi.merek = txtMerek.Text
+                    transaksi.type = txtType.Text
+                    transaksi.serial_number = txtSerialNumber.Text
+                    transaksi.jenis_kerusakan = cmbJenisKerusakan.Text
+                    transaksi.kelengkapan = txtKelengkapan.Text
+                    transaksi.keluhan = txtKeluhan.Text
+                    transaksi.catatan = txtCatatan.Text
+                    transaksi.total = txtTotalHarga.Text
+                    transaksi.bayar = txtDibayarkan.Text
+                    transaksi.kembalian = txtSisaPembayaran.Text
+                    transaksi.tanggal_keluar = Date.Now
+
+                    If transaksi.update() Then
+                        MsgBox("Berhasil menyimpan data transaksi")
+                    Else
+                        MsgBox("Menyimpan data transaksi gagal")
+                    End If
+                Else
+                    MsgBox("Tidak berhasil menyimpan data")
+                End If
+        End Select
+
+        Dim formLaporanNota As New FormLaporanNota(Me, transaksi.id)
+        formLaporanNota.MdiParent = formMenutUtama
+        formLaporanNota.Show()
+    End Sub
+
+    Sub changeColumnListDetail(index As Integer, detailTransaksi As DetailTransaksi)
+        Me.ListViewDetailTransaksi.Items(index).SubItems(2).Text = detailTransaksi.perihal
+        Me.ListViewDetailTransaksi.Items(index).SubItems(3).Text = detailTransaksi.satuan
+        Me.ListViewDetailTransaksi.Items(index).SubItems(4).Text = detailTransaksi.harga
+    End Sub
+
+    Sub addColumnListDetail(detailTransaksi As DetailTransaksi)
+        Dim baris As Integer = Me.ListViewDetailTransaksi.Items.Count + 1
+
+        Me.ListViewDetailTransaksi.Items.Add(baris)
+        Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(detailTransaksi.id)
+        Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(detailTransaksi.perihal)
+        Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(detailTransaksi.satuan)
+        Me.ListViewDetailTransaksi.Items(baris - 1).SubItems.Add(detailTransaksi.harga)
+
+    End Sub
+
+    Function formValidation() As Boolean
+        formValidation = True
+
+        If idPelanggan = 0 Then GoTo ErrorResult
+        If Not FormIsNull(txtMerek, "merek") Then GoTo ErrorResult
+
+        If Not FormIsNumeric(txtSisaPembayaran, "pembayaran") Then GoTo ErrorResult
+        If Not FormIsNull(txtSisaPembayaran, "pembayaran") Then GoTo ErrorResult
+        If Not costumFormMin(txtSisaPembayaran, 0, "pembayaran") Then GoTo ErrorResult
+
+        If Not FormIsNumeric(txtTotalHarga, "total harga") Then GoTo ErrorResult
+        If Not FormIsNull(txtTotalHarga, "total harga") Then GoTo ErrorResult
+        If Not costumFormMin(txtTotalHarga, 0, "total harga") Then GoTo ErrorResult
+
+        If Not FormIsNumeric(txtDibayarkan, "dibayarkan") Then GoTo ErrorResult
+        If Not FormIsNull(txtDibayarkan, "dibayarkan") Then GoTo ErrorResult
+        If Not costumFormMin(txtSisaPembayaran, 0, "dibayarkan") Then GoTo ErrorResult
+
+        Exit Function
+
+ErrorResult:
+        formValidation = False
+        Exit Function
+    End Function
+
+
+    Function formValidationDetail() As Boolean
+        formValidationDetail = True
+
+        If Not FormIsNull(txtPerihal, "perihal") Then GoTo ErrorResult
+
+        If Not FormIsNumeric(txtSatuan, "satuan") Then GoTo ErrorResult
+        If Not FormIsNull(txtSatuan, "satuan") Then GoTo ErrorResult
+        If Not costumFormMin(txtSatuan, 0, "satuan") Then GoTo ErrorResult
+
+        If Not FormIsNumeric(txtHarga, "harga") Then GoTo ErrorResult
+        If Not FormIsNull(txtHarga, "harga") Then GoTo ErrorResult
+        If Not costumFormMin(txtHarga, 0, "harga") Then GoTo ErrorResult
+
+        Exit Function
+ErrorResult:
+        formValidationDetail = False
+        Exit Function
+    End Function
+
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles btnHapus1.Click
+        Dim jawab As String = MsgBox("Anda yakin menghapus data transaksi ini", vbYesNo, "Konfirmasi")
+
+        If jawab = vbYes Then
+            transaksi.delete()
+            Me.formDaftarKerusakan.remove(baris)
+            Me.Close()
+        End If
     End Sub
 End Class

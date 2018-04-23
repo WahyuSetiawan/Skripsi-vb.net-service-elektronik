@@ -25,17 +25,19 @@ Partial Class FormPerbaikan
         Me.btnPilihPelanggan = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnCetak = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.btnSimpan = New System.Windows.Forms.Button()
+        Me.btnHapus1 = New System.Windows.Forms.Button()
+        Me.btnUbah = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtSerialNumber = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtNamaBarang = New System.Windows.Forms.TextBox()
+        Me.txtMerek = New System.Windows.Forms.TextBox()
         Me.lblNamaPelanggan = New System.Windows.Forms.Label()
         Me.txtKelengkapan = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtType = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cmbJenisKerusakan = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -75,9 +77,9 @@ Partial Class FormPerbaikan
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.btnCetak)
-        Me.GroupBox2.Controls.Add(Me.Button1)
-        Me.GroupBox2.Controls.Add(Me.btnSimpan)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 646)
+        Me.GroupBox2.Controls.Add(Me.btnHapus1)
+        Me.GroupBox2.Controls.Add(Me.btnUbah)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 666)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(507, 57)
         Me.GroupBox2.TabIndex = 21
@@ -92,28 +94,28 @@ Partial Class FormPerbaikan
         Me.btnCetak.Text = "Cetak Selesai Dan Cetak"
         Me.btnCetak.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnHapus1
         '
-        Me.Button1.Location = New System.Drawing.Point(93, 19)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 11
-        Me.Button1.Text = "Hapus"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnHapus1.Location = New System.Drawing.Point(93, 19)
+        Me.btnHapus1.Name = "btnHapus1"
+        Me.btnHapus1.Size = New System.Drawing.Size(75, 23)
+        Me.btnHapus1.TabIndex = 11
+        Me.btnHapus1.Text = "Hapus"
+        Me.btnHapus1.UseVisualStyleBackColor = True
         '
-        'btnSimpan
+        'btnUbah
         '
-        Me.btnSimpan.Location = New System.Drawing.Point(12, 19)
-        Me.btnSimpan.Name = "btnSimpan"
-        Me.btnSimpan.Size = New System.Drawing.Size(75, 24)
-        Me.btnSimpan.TabIndex = 10
-        Me.btnSimpan.Text = "Simpan"
-        Me.btnSimpan.UseVisualStyleBackColor = True
+        Me.btnUbah.Location = New System.Drawing.Point(12, 19)
+        Me.btnUbah.Name = "btnUbah"
+        Me.btnUbah.Size = New System.Drawing.Size(75, 24)
+        Me.btnUbah.TabIndex = 10
+        Me.btnUbah.Text = "Ubah"
+        Me.btnUbah.UseVisualStyleBackColor = True
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(15, 142)
+        Me.Label7.Location = New System.Drawing.Point(15, 162)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(92, 13)
         Me.Label7.TabIndex = 19
@@ -122,7 +124,7 @@ Partial Class FormPerbaikan
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(15, 201)
+        Me.Label3.Location = New System.Drawing.Point(15, 221)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(46, 13)
         Me.Label3.TabIndex = 14
@@ -130,26 +132,26 @@ Partial Class FormPerbaikan
         '
         'txtSerialNumber
         '
-        Me.txtSerialNumber.Location = New System.Drawing.Point(116, 73)
+        Me.txtSerialNumber.Location = New System.Drawing.Point(116, 96)
         Me.txtSerialNumber.Name = "txtSerialNumber"
-        Me.txtSerialNumber.Size = New System.Drawing.Size(371, 20)
+        Me.txtSerialNumber.Size = New System.Drawing.Size(385, 20)
         Me.txtSerialNumber.TabIndex = 16
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(15, 73)
+        Me.Label6.Location = New System.Drawing.Point(15, 96)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(73, 13)
         Me.Label6.TabIndex = 15
         Me.Label6.Text = "Serial Number"
         '
-        'txtNamaBarang
+        'txtMerek
         '
-        Me.txtNamaBarang.Location = New System.Drawing.Point(116, 45)
-        Me.txtNamaBarang.Name = "txtNamaBarang"
-        Me.txtNamaBarang.Size = New System.Drawing.Size(371, 20)
-        Me.txtNamaBarang.TabIndex = 14
+        Me.txtMerek.Location = New System.Drawing.Point(116, 45)
+        Me.txtMerek.Name = "txtMerek"
+        Me.txtMerek.Size = New System.Drawing.Size(195, 20)
+        Me.txtMerek.TabIndex = 14
         '
         'lblNamaPelanggan
         '
@@ -162,7 +164,7 @@ Partial Class FormPerbaikan
         '
         'txtKelengkapan
         '
-        Me.txtKelengkapan.Location = New System.Drawing.Point(113, 120)
+        Me.txtKelengkapan.Location = New System.Drawing.Point(113, 140)
         Me.txtKelengkapan.Multiline = True
         Me.txtKelengkapan.Name = "txtKelengkapan"
         Me.txtKelengkapan.Size = New System.Drawing.Size(406, 52)
@@ -173,16 +175,18 @@ Partial Class FormPerbaikan
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(15, 45)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(72, 13)
+        Me.Label2.Size = New System.Drawing.Size(37, 13)
         Me.Label2.TabIndex = 10
-        Me.Label2.Text = "Nama Barang"
+        Me.Label2.Text = "Merek"
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txtType)
+        Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.btnPilihPelanggan)
         Me.GroupBox1.Controls.Add(Me.txtSerialNumber)
         Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.txtNamaBarang)
+        Me.GroupBox1.Controls.Add(Me.txtMerek)
         Me.GroupBox1.Controls.Add(Me.lblNamaPelanggan)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.cmbJenisKerusakan)
@@ -190,10 +194,26 @@ Partial Class FormPerbaikan
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(507, 102)
+        Me.GroupBox1.Size = New System.Drawing.Size(507, 122)
         Me.GroupBox1.TabIndex = 18
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data Pelanggan"
+        '
+        'txtType
+        '
+        Me.txtType.Location = New System.Drawing.Point(116, 70)
+        Me.txtType.Name = "txtType"
+        Me.txtType.Size = New System.Drawing.Size(273, 20)
+        Me.txtType.TabIndex = 19
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(15, 70)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(31, 13)
+        Me.Label14.TabIndex = 18
+        Me.Label14.Text = "Type"
         '
         'Label5
         '
@@ -209,7 +229,7 @@ Partial Class FormPerbaikan
         Me.cmbJenisKerusakan.FormattingEnabled = True
         Me.cmbJenisKerusakan.Location = New System.Drawing.Point(366, 18)
         Me.cmbJenisKerusakan.Name = "cmbJenisKerusakan"
-        Me.cmbJenisKerusakan.Size = New System.Drawing.Size(121, 21)
+        Me.cmbJenisKerusakan.Size = New System.Drawing.Size(135, 21)
         Me.cmbJenisKerusakan.TabIndex = 11
         '
         'Label1
@@ -223,15 +243,15 @@ Partial Class FormPerbaikan
         '
         'txtCatatan
         '
-        Me.txtCatatan.Location = New System.Drawing.Point(113, 237)
+        Me.txtCatatan.Location = New System.Drawing.Point(113, 257)
         Me.txtCatatan.Multiline = True
         Me.txtCatatan.Name = "txtCatatan"
-        Me.txtCatatan.Size = New System.Drawing.Size(324, 56)
+        Me.txtCatatan.Size = New System.Drawing.Size(406, 56)
         Me.txtCatatan.TabIndex = 17
         '
         'txtKeluhan
         '
-        Me.txtKeluhan.Location = New System.Drawing.Point(113, 179)
+        Me.txtKeluhan.Location = New System.Drawing.Point(113, 199)
         Me.txtKeluhan.Multiline = True
         Me.txtKeluhan.Name = "txtKeluhan"
         Me.txtKeluhan.Size = New System.Drawing.Size(406, 52)
@@ -240,7 +260,7 @@ Partial Class FormPerbaikan
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 259)
+        Me.Label4.Location = New System.Drawing.Point(15, 279)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(44, 13)
         Me.Label4.TabIndex = 15
@@ -257,7 +277,7 @@ Partial Class FormPerbaikan
         Me.GroupBox3.Controls.Add(Me.Label9)
         Me.GroupBox3.Controls.Add(Me.txtPerihal)
         Me.GroupBox3.Controls.Add(Me.Label8)
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 299)
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 319)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(507, 263)
         Me.GroupBox3.TabIndex = 23
@@ -343,7 +363,7 @@ Partial Class FormPerbaikan
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(18, 571)
+        Me.Label11.Location = New System.Drawing.Point(18, 591)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(60, 13)
         Me.Label11.TabIndex = 24
@@ -351,7 +371,7 @@ Partial Class FormPerbaikan
         '
         'txtTotalHarga
         '
-        Me.txtTotalHarga.Location = New System.Drawing.Point(277, 568)
+        Me.txtTotalHarga.Location = New System.Drawing.Point(277, 588)
         Me.txtTotalHarga.Name = "txtTotalHarga"
         Me.txtTotalHarga.Size = New System.Drawing.Size(236, 20)
         Me.txtTotalHarga.TabIndex = 26
@@ -359,7 +379,7 @@ Partial Class FormPerbaikan
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(20, 597)
+        Me.Label12.Location = New System.Drawing.Point(20, 617)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(34, 13)
         Me.Label12.TabIndex = 27
@@ -368,7 +388,7 @@ Partial Class FormPerbaikan
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(18, 623)
+        Me.Label13.Location = New System.Drawing.Point(18, 643)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(89, 13)
         Me.Label13.TabIndex = 28
@@ -376,14 +396,14 @@ Partial Class FormPerbaikan
         '
         'txtSisaPembayaran
         '
-        Me.txtSisaPembayaran.Location = New System.Drawing.Point(277, 620)
+        Me.txtSisaPembayaran.Location = New System.Drawing.Point(277, 640)
         Me.txtSisaPembayaran.Name = "txtSisaPembayaran"
         Me.txtSisaPembayaran.Size = New System.Drawing.Size(236, 20)
         Me.txtSisaPembayaran.TabIndex = 29
         '
         'txtDibayarkan
         '
-        Me.txtDibayarkan.Location = New System.Drawing.Point(277, 594)
+        Me.txtDibayarkan.Location = New System.Drawing.Point(277, 614)
         Me.txtDibayarkan.Name = "txtDibayarkan"
         Me.txtDibayarkan.Size = New System.Drawing.Size(236, 20)
         Me.txtDibayarkan.TabIndex = 30
@@ -392,7 +412,7 @@ Partial Class FormPerbaikan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(528, 709)
+        Me.ClientSize = New System.Drawing.Size(528, 729)
         Me.Controls.Add(Me.txtDibayarkan)
         Me.Controls.Add(Me.txtSisaPembayaran)
         Me.Controls.Add(Me.Label13)
@@ -409,6 +429,7 @@ Partial Class FormPerbaikan
         Me.Controls.Add(Me.txtKeluhan)
         Me.Controls.Add(Me.Label4)
         Me.Name = "FormPerbaikan"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormPerbaikan"
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
@@ -422,13 +443,13 @@ Partial Class FormPerbaikan
     Friend WithEvents btnPilihPelanggan As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents btnCetak As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents btnSimpan As System.Windows.Forms.Button
+    Friend WithEvents btnHapus1 As System.Windows.Forms.Button
+    Friend WithEvents btnUbah As System.Windows.Forms.Button
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtSerialNumber As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents txtNamaBarang As System.Windows.Forms.TextBox
+    Friend WithEvents txtMerek As System.Windows.Forms.TextBox
     Friend WithEvents lblNamaPelanggan As System.Windows.Forms.Label
     Friend WithEvents txtKelengkapan As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -455,4 +476,6 @@ Partial Class FormPerbaikan
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents txtSisaPembayaran As System.Windows.Forms.TextBox
     Friend WithEvents txtDibayarkan As System.Windows.Forms.TextBox
+    Friend WithEvents txtType As TextBox
+    Friend WithEvents Label14 As Label
 End Class
