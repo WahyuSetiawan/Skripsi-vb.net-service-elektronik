@@ -49,6 +49,7 @@
     End Sub
 
     Private Sub btnSimpan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSimpan.Click
+        MsgBox(formValidation)
         If formValidation() Then
             Dim transaksi As New Transaksi
 
@@ -61,8 +62,12 @@
             transaksi.keluhan = txtKeluhan.Text
             transaksi.catatan = txtCatatan.Text
 
+            MsgBox("dijalankan")
+
             If Not transaksi.save = -1 Then
+                Me.formDaftarKerusakan.addList(transaksi)
                 MsgBox("Berhasil menyimpan data transaksi baru")
+                Me.Close()
             End If
         End If
     End Sub
@@ -82,9 +87,10 @@
             GoTo errorResult
         End If
 
-        If FormIsNull(txtMerek, "merek") Then GoTo errorResult
-        If FormIsNull(txtKeluhan, "keluhan") Then GoTo errorResult
+        If Not FormIsNull(txtMerek, "merek") Then GoTo errorResult
+        If Not FormIsNull(txtKeluhan, "keluhan") Then GoTo errorResult
 
+        Exit Function
 errorResult:
         formValidation = False
         Exit Function

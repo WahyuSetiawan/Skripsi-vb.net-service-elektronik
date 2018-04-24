@@ -98,12 +98,6 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Laporan\CRDetailTransaksi.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CRDetailTransaksi.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Laporan\CRNotaPenjualan.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,28 +110,10 @@
       <DependentUpon>CRPelanggan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Laporan\CrystalReportNotaPenjualan2.vb">
+    <Compile Include="Laporan\CRTransaksi.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReportNotaPenjualan2.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Laporan\CrystalReportDetailTransaksi.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReportDetailTransaksi.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Laporan\CrystalReportNotaPenjualan.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReportNotaPenjualan.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Laporan\CrystalReportPelanggan.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReportPelanggan.rpt</DependentUpon>
+      <DependentUpon>CRTransaksi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Model\Konfigurasi.vb" />
@@ -154,10 +130,16 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Module\GlobalReport.vb" />
-    <Compile Include="View\FormLaporanPelanggan.Designer.vb">
-      <DependentUpon>FormLaporanPelanggan.vb</DependentUpon>
+    <Compile Include="View\FormLaporanTransaksi.Designer.vb">
+      <DependentUpon>FormLaporanTransaksi.vb</DependentUpon>
     </Compile>
-    <Compile Include="View\FormLaporanPelanggan.vb">
+    <Compile Include="View\FormLaporanTransaksi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LaporanPelanggan.Designer.vb">
+      <DependentUpon>LaporanPelanggan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\LaporanPelanggan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormCheckAndRepair.Designer.vb">
@@ -172,10 +154,10 @@
     <Compile Include="View\FormDaftarKerusakan.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FormLaporanNota.Designer.vb">
-      <DependentUpon>FormLaporanNota.vb</DependentUpon>
+    <Compile Include="View\LaporanNota.Designer.vb">
+      <DependentUpon>LaporanNota.vb</DependentUpon>
     </Compile>
-    <Compile Include="View\FormLaporanNota.vb">
+    <Compile Include="View\LaporanNota.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormLogin.Designer.vb">
@@ -224,12 +206,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="View\FormLaporanPelanggan.Designer.vb">
+      <DependentUpon>FormLaporanPelanggan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormLaporanPelanggan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LaporanTransaksi.Designer.vb">
+      <DependentUpon>LaporanTransaksi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\LaporanTransaksi.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Laporan\CRDetailTransaksi.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CRDetailTransaksi.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Laporan\CRNotaPenjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRNotaPenjualan.vb</LastGenOutput>
@@ -238,24 +228,18 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRPelanggan.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Laporan\CrystalReportNotaPenjualan2.rpt">
+    <EmbeddedResource Include="Laporan\CRTransaksi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReportNotaPenjualan2.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Laporan\CrystalReportDetailTransaksi.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReportDetailTransaksi.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Laporan\CrystalReportNotaPenjualan.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReportNotaPenjualan.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Laporan\CrystalReportPelanggan.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReportPelanggan.vb</LastGenOutput>
+      <LastGenOutput>CRTransaksi.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormLaporanPelanggan.resx">
       <DependentUpon>FormLaporanPelanggan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormLaporanTransaksi.resx">
+      <DependentUpon>FormLaporanTransaksi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LaporanPelanggan.resx">
+      <DependentUpon>LaporanPelanggan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormCheckAndRepair.resx">
       <DependentUpon>FormCheckAndRepair.vb</DependentUpon>
@@ -263,8 +247,8 @@
     <EmbeddedResource Include="View\FormDaftarKerusakan.resx">
       <DependentUpon>FormDaftarKerusakan.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormLaporanNota.resx">
-      <DependentUpon>FormLaporanNota.vb</DependentUpon>
+    <EmbeddedResource Include="View\LaporanNota.resx">
+      <DependentUpon>LaporanNota.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormLogin.resx">
       <DependentUpon>FormLogin.vb</DependentUpon>
@@ -286,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormSettingKeamanan.resx">
       <DependentUpon>FormSettingKeamanan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LaporanTransaksi.resx">
+      <DependentUpon>LaporanTransaksi.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,32 +1,30 @@
-﻿Imports CrystalDecisions.CrystalReports.Engine
-Imports CrystalDecisions.Shared
+﻿Public Class FormLaporanPelanggan
+    Dim formmenuutama As FormMenuUtama
+    Sub New(form As FormMenuUtama)
 
-Public Class FormLaporanPelanggan
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim cryRpt As New ReportDocument
-        Dim pathLaporan As String = getLaporanPath("CrystalReportPelanggan.rpt")
+        ' This call is required by the designer.
+        InitializeComponent()
 
-        If Not pathLaporan = "" Then
-            cryRpt.Load(pathLaporan)
+        ' Add any initialization after the InitializeComponent() call.
+        Me.formmenuutama = form
+    End Sub
 
-            Dim cryParameterFieldDefinitions As ParameterFieldDefinitions
-            Dim cryParameterFieldDefinition As ParameterFieldDefinition
-            Dim cryParameterValues As New ParameterValues
-            Dim cryParameterDiscreteValue As New ParameterDiscreteValue
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
-            cryParameterDiscreteValue.Value = "1"
-            cryParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields
-            cryParameterFieldDefinition = cryParameterFieldDefinitions.Item("idPelanggan")
-            cryParameterValues = cryParameterFieldDefinition.CurrentValues
+    End Sub
 
-            cryParameterValues.Clear()
-            cryParameterValues.Add(cryParameterDiscreteValue)
-            cryParameterFieldDefinition.ApplyCurrentValues(cryParameterValues)
+    Private Sub btnBatal_Click(sender As Object, e As EventArgs) Handles btnBatal.Click
+        Me.Close()
+    End Sub
 
-            Me.CrystalReportViewer1.ReportSource = cryRpt
-            Me.CrystalReportViewer1.Refresh()
-        Else
-            Me.Close()
-        End If
+    Private Sub btnOK_Click(sender As Object, e As EventArgs) Handles btnOK.Click
+        Try
+            Dim form As New LaporanPelanggan
+            form.MdiParent = Me.formmenuutama
+            form.Show()
+        Catch ex As Exception
+            MsgBox("Terjadi kesalahan : " + ex.Message)
+        End Try
+
     End Sub
 End Class

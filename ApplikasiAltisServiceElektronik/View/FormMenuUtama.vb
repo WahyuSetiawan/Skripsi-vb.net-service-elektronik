@@ -38,9 +38,9 @@
         End Try
     End Sub
 
-    Private Sub LapornaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LapornaToolStripMenuItem.Click
+    Private Sub LapornaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Try
-            Dim form As New FormLaporanPelanggan
+            Dim form As New LaporanPelanggan
             form.MdiParent = Me
             form.Show()
         Catch ex As Exception
@@ -63,6 +63,30 @@
             Dim form As New FormDaftarKerusakan(Me)
             form.MdiParent = Me
             form.StartPosition = FormStartPosition.CenterParent
+            form.Show()
+        Catch ex As Exception
+            MsgBox("Terjadi kesalahan : " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub FormMenuUtama_Load(sender As Object, e As EventArgs) Handles MyBase.Closed
+        Application.Exit()
+    End Sub
+
+    Private Sub LaporanPelangganToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanPelangganToolStripMenuItem.Click
+        Try
+            Dim form As New FormLaporanPelanggan(Me)
+            form.MdiParent = Me
+            form.Show()
+        Catch ex As Exception
+            MsgBox("Terjadi kesalahan : " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub LaporanTransaksiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanTransaksiToolStripMenuItem.Click
+        Try
+            Dim form As New FormLaporanTransaksi(Me)
+            form.MdiParent = Me
             form.Show()
         Catch ex As Exception
             MsgBox("Terjadi kesalahan : " & ex.Message)

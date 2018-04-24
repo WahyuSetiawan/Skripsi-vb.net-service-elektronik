@@ -274,7 +274,7 @@ Public Class FormPerbaikan
                 End If
         End Select
 
-        Dim formLaporanNota As New FormLaporanNota(Me, transaksi.id)
+        Dim formLaporanNota As New LaporanNota(Me, transaksi.id)
         formLaporanNota.MdiParent = formMenutUtama
         formLaporanNota.Show()
     End Sub

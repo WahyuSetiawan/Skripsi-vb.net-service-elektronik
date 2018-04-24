@@ -71,10 +71,8 @@ D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\Applikas
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\stdole.dll
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\bin\Debug\Microsoft.ReportViewer.WinForms.xml
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.vbprojResolveAssemblyReference.cache
-D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLaporanPelanggan.resources
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormCheckAndRepair.resources
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormDaftarKerusakan.resources
-D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLaporanNota.resources
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLogin.resources
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormPerbaikan.resources
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormMenuUtama.resources
@@ -82,3 +80,8 @@ D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\Applikas
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormPelanggan.resources
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormSetttingKeamanan.resources
 D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\AplikasiAltisServiceElektronik.vbproj.GenerateResource.Cache
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.LaporanPelanggan.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.LaporanNota.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLaporanPelanggan.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.FormLaporanTransaksi.resources
+D:\Project\Project - Lukman\Skripsi - Teman Lukman - Service Elektronik\ApplikasiAltisServiceElektronik\ApplikasiAltisServiceElektronik\obj\x86\Debug\ApplikasiAltisServiceElektronik.LaporanTransaksi.resources
