@@ -29,16 +29,8 @@
     Sub LoadDataTable()
         Dim pelanggans As List(Of Pelanggan) = Pelanggan.all
 
-        For i = 0 To pelanggans.Count - 1
-            Dim pelanggan As Pelanggan = pelanggans.Item(i)
-            Dim baris As Integer = i + 1
-
-            Me.ListView1.Items.Add(baris)
-            Me.ListView1.Items(baris - 1).SubItems.Add(pelanggan.ID.ToString)
-            Me.ListView1.Items(baris - 1).SubItems.Add(pelanggan.nama)
-            Me.ListView1.Items(baris - 1).SubItems.Add(pelanggan.alamat)
-            Me.ListView1.Items(baris - 1).SubItems.Add(pelanggan.noTelepon)
-            Me.ListView1.Items(baris - 1).SubItems.Add(pelanggan.noKtp)
+        For Each pelanggan As Pelanggan In pelanggans
+            addListView(pelanggan)
         Next
     End Sub
 
@@ -55,8 +47,8 @@
             ListView1.Columns.Add("ID")
             ListView1.Columns.Add("Nama")
             ListView1.Columns.Add("Alamat")
-            ListView1.Columns.Add("No Telepon")
             ListView1.Columns.Add("No KTP")
+            ListView1.Columns.Add("No Telepon")
         End With
     End Sub
 
@@ -178,24 +170,24 @@
 
     Sub changeListView(index As Integer, pelanggan As Pelanggan)
         With Me.ListView1
-            .Items(index).SubItems.Add(pelanggan.ID.ToString)
-            .Items(index).SubItems.Add(pelanggan.nama)
-            .Items(index).SubItems.Add(pelanggan.alamat)
-            .Items(index).SubItems.Add(pelanggan.noKtp)
-            .Items(index).SubItems.Add(pelanggan.noTelepon)
+            .Items(index - 1).SubItems.Add(pelanggan.ID.ToString)
+            .Items(index - 1).SubItems.Add(pelanggan.nama)
+            .Items(index - 1).SubItems.Add(pelanggan.alamat)
+            .Items(index - 1).SubItems.Add(pelanggan.noKtp)
+            .Items(index - 1).SubItems.Add(pelanggan.noTelepon)
         End With
     End Sub
 
     Sub addListView(pelanggan As Pelanggan)
         With Me.ListView1
-            Dim baris As Integer = .Items.Count + 1
+            Dim baris As Integer = Me.ListView1.Items.Count + 1
 
             .Items.Add(baris)
-            .Items(baris).SubItems.Add(pelanggan.ID.ToString)
-            .Items(baris).SubItems.Add(pelanggan.nama)
-            .Items(baris).SubItems.Add(pelanggan.alamat)
-            .Items(baris).SubItems.Add(pelanggan.noKtp)
-            .Items(baris).SubItems.Add(pelanggan.noTelepon)
+            .Items(baris - 1).SubItems.Add(pelanggan.ID.ToString)
+            .Items(baris - 1).SubItems.Add(pelanggan.nama)
+            .Items(baris - 1).SubItems.Add(pelanggan.alamat)
+            .Items(baris - 1).SubItems.Add(pelanggan.noKtp)
+            .Items(baris - 1).SubItems.Add(pelanggan.noTelepon)
         End With
     End Sub
 
@@ -208,4 +200,15 @@
 errorResult:
         formValidationPelanggan = False
     End Function
+
+    Private Sub btnCari_Click(sender As Object, e As EventArgs) Handles btnCari.Click
+        Dim pelanggans As List(Of Pelanggan) = Pelanggan.search(txtCari.Text.ToString)
+
+        Me.ListView1.Items.Clear()
+
+        For Each pelanggan As Pelanggan In pelanggans
+            addListView(pelanggan)
+        Next
+
+    End Sub
 End Class

@@ -24,6 +24,7 @@
             .Columns.Add("Keluhan")
             .Columns.Add("Catatan")
             .Columns.Add("Tanggal Masuk")
+            .Columns.Add("Selesai")
         End With
     End Sub
 
@@ -75,6 +76,13 @@
         Me.ListView1.Items(baris - 1).SubItems.Add(transaksi.keluhan)
         Me.ListView1.Items(baris - 1).SubItems.Add(transaksi.catatan)
         Me.ListView1.Items(baris - 1).SubItems.Add(transaksi.tanggal_masuk.ToString)
+
+        If transaksi.tanggal_keluar = Nothing Then
+            Me.ListView1.Items(baris - 1).SubItems.Add("Belum selesai")
+        Else
+            Me.ListView1.Items(baris - 1).SubItems.Add("Selesai pada tanggal : " & transaksi.tanggal_keluar.ToString)
+        End If
+
     End Sub
 
     Sub changeList(baris As Integer, transaksi As Transaksi)
@@ -87,5 +95,22 @@
         Me.ListView1.Items(baris).SubItems(7).Text = transaksi.keluhan
         Me.ListView1.Items(baris).SubItems(8).Text = transaksi.catatan
         Me.ListView1.Items(baris).SubItems(9).Text = transaksi.tanggal_masuk.ToString
+
+        If transaksi.tanggal_keluar = Nothing Then
+            Me.ListView1.Items(baris - 1).SubItems.Add("Belum selesai")
+        Else
+            Me.ListView1.Items(baris - 1).SubItems.Add("Selesai pada tanggal : " & transaksi.tanggal_keluar.ToString)
+        End If
+    End Sub
+
+    Private Sub btnCari_Click(sender As Object, e As EventArgs) Handles btnCari.Click
+        Dim transaksis As List(Of Transaksi) = Transaksi.search(txtCari.Text.ToString)
+
+        Me.ListView1.Items.Clear()
+
+        For Each transaksi As Transaksi In transaksis
+            addList(transaksi)
+        Next
+
     End Sub
 End Class

@@ -70,7 +70,7 @@ Partial Class FormPerbaikan
         Me.btnPilihPelanggan.Location = New System.Drawing.Point(116, 16)
         Me.btnPilihPelanggan.Name = "btnPilihPelanggan"
         Me.btnPilihPelanggan.Size = New System.Drawing.Size(25, 23)
-        Me.btnPilihPelanggan.TabIndex = 17
+        Me.btnPilihPelanggan.TabIndex = 1
         Me.btnPilihPelanggan.Text = "..."
         Me.btnPilihPelanggan.UseVisualStyleBackColor = True
         '
@@ -90,7 +90,7 @@ Partial Class FormPerbaikan
         Me.btnCetak.Location = New System.Drawing.Point(348, 20)
         Me.btnCetak.Name = "btnCetak"
         Me.btnCetak.Size = New System.Drawing.Size(153, 23)
-        Me.btnCetak.TabIndex = 13
+        Me.btnCetak.TabIndex = 20
         Me.btnCetak.Text = "Cetak Selesai Dan Cetak"
         Me.btnCetak.UseVisualStyleBackColor = True
         '
@@ -99,7 +99,7 @@ Partial Class FormPerbaikan
         Me.btnHapus1.Location = New System.Drawing.Point(93, 19)
         Me.btnHapus1.Name = "btnHapus1"
         Me.btnHapus1.Size = New System.Drawing.Size(75, 23)
-        Me.btnHapus1.TabIndex = 11
+        Me.btnHapus1.TabIndex = 19
         Me.btnHapus1.Text = "Hapus"
         Me.btnHapus1.UseVisualStyleBackColor = True
         '
@@ -108,7 +108,7 @@ Partial Class FormPerbaikan
         Me.btnUbah.Location = New System.Drawing.Point(12, 19)
         Me.btnUbah.Name = "btnUbah"
         Me.btnUbah.Size = New System.Drawing.Size(75, 24)
-        Me.btnUbah.TabIndex = 10
+        Me.btnUbah.TabIndex = 18
         Me.btnUbah.Text = "Ubah"
         Me.btnUbah.UseVisualStyleBackColor = True
         '
@@ -135,7 +135,7 @@ Partial Class FormPerbaikan
         Me.txtSerialNumber.Location = New System.Drawing.Point(116, 96)
         Me.txtSerialNumber.Name = "txtSerialNumber"
         Me.txtSerialNumber.Size = New System.Drawing.Size(385, 20)
-        Me.txtSerialNumber.TabIndex = 16
+        Me.txtSerialNumber.TabIndex = 5
         '
         'Label6
         '
@@ -151,7 +151,7 @@ Partial Class FormPerbaikan
         Me.txtMerek.Location = New System.Drawing.Point(116, 45)
         Me.txtMerek.Name = "txtMerek"
         Me.txtMerek.Size = New System.Drawing.Size(195, 20)
-        Me.txtMerek.TabIndex = 14
+        Me.txtMerek.TabIndex = 3
         '
         'lblNamaPelanggan
         '
@@ -168,7 +168,7 @@ Partial Class FormPerbaikan
         Me.txtKelengkapan.Multiline = True
         Me.txtKelengkapan.Name = "txtKelengkapan"
         Me.txtKelengkapan.Size = New System.Drawing.Size(406, 52)
-        Me.txtKelengkapan.TabIndex = 20
+        Me.txtKelengkapan.TabIndex = 6
         '
         'Label2
         '
@@ -204,7 +204,7 @@ Partial Class FormPerbaikan
         Me.txtType.Location = New System.Drawing.Point(116, 70)
         Me.txtType.Name = "txtType"
         Me.txtType.Size = New System.Drawing.Size(273, 20)
-        Me.txtType.TabIndex = 19
+        Me.txtType.TabIndex = 4
         '
         'Label14
         '
@@ -230,7 +230,7 @@ Partial Class FormPerbaikan
         Me.cmbJenisKerusakan.Location = New System.Drawing.Point(366, 18)
         Me.cmbJenisKerusakan.Name = "cmbJenisKerusakan"
         Me.cmbJenisKerusakan.Size = New System.Drawing.Size(135, 21)
-        Me.cmbJenisKerusakan.TabIndex = 11
+        Me.cmbJenisKerusakan.TabIndex = 2
         '
         'Label1
         '
@@ -247,7 +247,7 @@ Partial Class FormPerbaikan
         Me.txtCatatan.Multiline = True
         Me.txtCatatan.Name = "txtCatatan"
         Me.txtCatatan.Size = New System.Drawing.Size(406, 56)
-        Me.txtCatatan.TabIndex = 17
+        Me.txtCatatan.TabIndex = 8
         '
         'txtKeluhan
         '
@@ -255,7 +255,7 @@ Partial Class FormPerbaikan
         Me.txtKeluhan.Multiline = True
         Me.txtKeluhan.Name = "txtKeluhan"
         Me.txtKeluhan.Size = New System.Drawing.Size(406, 52)
-        Me.txtKeluhan.TabIndex = 16
+        Me.txtKeluhan.TabIndex = 7
         '
         'Label4
         '
@@ -290,7 +290,7 @@ Partial Class FormPerbaikan
         Me.btnHapus.Location = New System.Drawing.Point(426, 234)
         Me.btnHapus.Name = "btnHapus"
         Me.btnHapus.Size = New System.Drawing.Size(75, 23)
-        Me.btnHapus.TabIndex = 24
+        Me.btnHapus.TabIndex = 14
         Me.btnHapus.Text = "Hapus"
         Me.btnHapus.UseVisualStyleBackColor = True
         '
@@ -299,7 +299,7 @@ Partial Class FormPerbaikan
         Me.ListViewDetailTransaksi.Location = New System.Drawing.Point(11, 62)
         Me.ListViewDetailTransaksi.Name = "ListViewDetailTransaksi"
         Me.ListViewDetailTransaksi.Size = New System.Drawing.Size(490, 166)
-        Me.ListViewDetailTransaksi.TabIndex = 23
+        Me.ListViewDetailTransaksi.TabIndex = 13
         Me.ListViewDetailTransaksi.UseCompatibleStateImageBehavior = False
         '
         'txtSatuan
@@ -307,7 +307,7 @@ Partial Class FormPerbaikan
         Me.txtSatuan.Location = New System.Drawing.Point(204, 36)
         Me.txtSatuan.Name = "txtSatuan"
         Me.txtSatuan.Size = New System.Drawing.Size(107, 20)
-        Me.txtSatuan.TabIndex = 6
+        Me.txtSatuan.TabIndex = 10
         '
         'Label10
         '
@@ -324,7 +324,7 @@ Partial Class FormPerbaikan
         Me.btnTambahDetail.Location = New System.Drawing.Point(426, 33)
         Me.btnTambahDetail.Name = "btnTambahDetail"
         Me.btnTambahDetail.Size = New System.Drawing.Size(75, 23)
-        Me.btnTambahDetail.TabIndex = 4
+        Me.btnTambahDetail.TabIndex = 12
         Me.btnTambahDetail.Text = "Tambah"
         Me.btnTambahDetail.UseVisualStyleBackColor = True
         '
@@ -333,7 +333,7 @@ Partial Class FormPerbaikan
         Me.txtHarga.Location = New System.Drawing.Point(317, 36)
         Me.txtHarga.Name = "txtHarga"
         Me.txtHarga.Size = New System.Drawing.Size(103, 20)
-        Me.txtHarga.TabIndex = 3
+        Me.txtHarga.TabIndex = 11
         '
         'Label9
         '
@@ -349,7 +349,7 @@ Partial Class FormPerbaikan
         Me.txtPerihal.Location = New System.Drawing.Point(13, 36)
         Me.txtPerihal.Name = "txtPerihal"
         Me.txtPerihal.Size = New System.Drawing.Size(185, 20)
-        Me.txtPerihal.TabIndex = 1
+        Me.txtPerihal.TabIndex = 9
         '
         'Label8
         '
@@ -374,7 +374,7 @@ Partial Class FormPerbaikan
         Me.txtTotalHarga.Location = New System.Drawing.Point(277, 588)
         Me.txtTotalHarga.Name = "txtTotalHarga"
         Me.txtTotalHarga.Size = New System.Drawing.Size(236, 20)
-        Me.txtTotalHarga.TabIndex = 26
+        Me.txtTotalHarga.TabIndex = 15
         '
         'Label12
         '
@@ -399,14 +399,14 @@ Partial Class FormPerbaikan
         Me.txtSisaPembayaran.Location = New System.Drawing.Point(277, 640)
         Me.txtSisaPembayaran.Name = "txtSisaPembayaran"
         Me.txtSisaPembayaran.Size = New System.Drawing.Size(236, 20)
-        Me.txtSisaPembayaran.TabIndex = 29
+        Me.txtSisaPembayaran.TabIndex = 17
         '
         'txtDibayarkan
         '
         Me.txtDibayarkan.Location = New System.Drawing.Point(277, 614)
         Me.txtDibayarkan.Name = "txtDibayarkan"
         Me.txtDibayarkan.Size = New System.Drawing.Size(236, 20)
-        Me.txtDibayarkan.TabIndex = 30
+        Me.txtDibayarkan.TabIndex = 16
         '
         'FormPerbaikan
         '

@@ -41,8 +41,8 @@ Partial Class FormCheckAndRepair
         Me.txtKelengkapan = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.btnSimpan = New System.Windows.Forms.Button()
         Me.btnBatal = New System.Windows.Forms.Button()
+        Me.btnSimpan = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -71,7 +71,7 @@ Partial Class FormCheckAndRepair
         Me.txtKeluhan.Multiline = True
         Me.txtKeluhan.Name = "txtKeluhan"
         Me.txtKeluhan.Size = New System.Drawing.Size(406, 52)
-        Me.txtKeluhan.TabIndex = 4
+        Me.txtKeluhan.TabIndex = 7
         '
         'txtCatatan
         '
@@ -79,7 +79,7 @@ Partial Class FormCheckAndRepair
         Me.txtCatatan.Multiline = True
         Me.txtCatatan.Name = "txtCatatan"
         Me.txtCatatan.Size = New System.Drawing.Size(406, 56)
-        Me.txtCatatan.TabIndex = 6
+        Me.txtCatatan.TabIndex = 8
         '
         'GroupBox1
         '
@@ -106,7 +106,7 @@ Partial Class FormCheckAndRepair
         Me.txtType.Location = New System.Drawing.Point(116, 71)
         Me.txtType.Name = "txtType"
         Me.txtType.Size = New System.Drawing.Size(371, 20)
-        Me.txtType.TabIndex = 19
+        Me.txtType.TabIndex = 4
         '
         'Label8
         '
@@ -122,7 +122,7 @@ Partial Class FormCheckAndRepair
         Me.btnPilihPelanggan.Location = New System.Drawing.Point(116, 16)
         Me.btnPilihPelanggan.Name = "btnPilihPelanggan"
         Me.btnPilihPelanggan.Size = New System.Drawing.Size(25, 23)
-        Me.btnPilihPelanggan.TabIndex = 17
+        Me.btnPilihPelanggan.TabIndex = 1
         Me.btnPilihPelanggan.Text = "..."
         Me.btnPilihPelanggan.UseVisualStyleBackColor = True
         '
@@ -131,7 +131,7 @@ Partial Class FormCheckAndRepair
         Me.txtSerialNumber.Location = New System.Drawing.Point(116, 97)
         Me.txtSerialNumber.Name = "txtSerialNumber"
         Me.txtSerialNumber.Size = New System.Drawing.Size(371, 20)
-        Me.txtSerialNumber.TabIndex = 16
+        Me.txtSerialNumber.TabIndex = 5
         '
         'Label6
         '
@@ -147,7 +147,7 @@ Partial Class FormCheckAndRepair
         Me.txtMerek.Location = New System.Drawing.Point(116, 45)
         Me.txtMerek.Name = "txtMerek"
         Me.txtMerek.Size = New System.Drawing.Size(177, 20)
-        Me.txtMerek.TabIndex = 14
+        Me.txtMerek.TabIndex = 3
         '
         'lblNamaPelanggan
         '
@@ -173,7 +173,7 @@ Partial Class FormCheckAndRepair
         Me.cmbJenisKerusakan.Location = New System.Drawing.Point(366, 18)
         Me.cmbJenisKerusakan.Name = "cmbJenisKerusakan"
         Me.cmbJenisKerusakan.Size = New System.Drawing.Size(121, 21)
-        Me.cmbJenisKerusakan.TabIndex = 11
+        Me.cmbJenisKerusakan.TabIndex = 2
         '
         'Label2
         '
@@ -199,7 +199,7 @@ Partial Class FormCheckAndRepair
         Me.txtKelengkapan.Multiline = True
         Me.txtKelengkapan.Name = "txtKelengkapan"
         Me.txtKelengkapan.Size = New System.Drawing.Size(406, 52)
-        Me.txtKelengkapan.TabIndex = 12
+        Me.txtKelengkapan.TabIndex = 6
         '
         'Label7
         '
@@ -220,23 +220,23 @@ Partial Class FormCheckAndRepair
         Me.GroupBox2.TabIndex = 13
         Me.GroupBox2.TabStop = False
         '
-        'btnSimpan
-        '
-        Me.btnSimpan.Location = New System.Drawing.Point(12, 19)
-        Me.btnSimpan.Name = "btnSimpan"
-        Me.btnSimpan.Size = New System.Drawing.Size(75, 24)
-        Me.btnSimpan.TabIndex = 10
-        Me.btnSimpan.Text = "Simpan"
-        Me.btnSimpan.UseVisualStyleBackColor = True
-        '
         'btnBatal
         '
         Me.btnBatal.Location = New System.Drawing.Point(406, 20)
         Me.btnBatal.Name = "btnBatal"
         Me.btnBatal.Size = New System.Drawing.Size(75, 23)
-        Me.btnBatal.TabIndex = 11
+        Me.btnBatal.TabIndex = 10
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
+        '
+        'btnSimpan
+        '
+        Me.btnSimpan.Location = New System.Drawing.Point(12, 19)
+        Me.btnSimpan.Name = "btnSimpan"
+        Me.btnSimpan.Size = New System.Drawing.Size(75, 24)
+        Me.btnSimpan.TabIndex = 9
+        Me.btnSimpan.Text = "Simpan"
+        Me.btnSimpan.UseVisualStyleBackColor = True
         '
         'FormCheckAndRepair
         '

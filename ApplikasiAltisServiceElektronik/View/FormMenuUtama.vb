@@ -1,8 +1,6 @@
 ﻿Public Class FormMenuUtama
     Private Sub LogOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LogOut.Click
-        If selectKonfigurationBoolean(keamananKonf) Then
-            FormLogin.Show()
-        End If
+
 
         Me.Close()
     End Sub
@@ -92,4 +90,20 @@
             MsgBox("Terjadi kesalahan : " & ex.Message)
         End Try
     End Sub
+
+    Private Sub FormMenuUtama_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
+        If selectKonfigurationBoolean(keamananKonf) Then showFormLogin()
+    End Sub
+
+    Private Sub showFormLogin()
+        Dim form As New FormLogin(Me)
+        form.MdiParent = Me
+        MenuStrip1.Enabled = False
+        form.Show()
+    End Sub
+
+    Sub enableFormMenuUtama()
+        MenuStrip1.Enabled = True
+    End Sub
+
 End Class

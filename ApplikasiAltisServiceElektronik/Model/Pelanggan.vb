@@ -185,4 +185,35 @@
         End Try
     End Function
 
+    Public Shared Function search(text As String) As List(Of Pelanggan)
+        Dim pelanggans As New List(Of Pelanggan)
+
+        Try
+            Dim myConnection As New OleDbConnection(appPathDatabase)
+            myConnection.Open()
+
+            Dim myCommand As New OleDbCommand("select * from pelanggan where nama like '%" & text & "%' or id & '' like '" & text & "' or  alamat like '%" & text & "%' or notelepon like '%" & text & "%' or  nama like '%" & text & "%'", myConnection)
+            Dim myReader As OleDbDataReader = myCommand.ExecuteReader
+
+            While myReader.Read()
+                Dim pelanggan As New Pelanggan
+
+                pelanggan.ID = getSafeInt32(myReader, "id")
+                pelanggan.nama = getSafeString(myReader, "nama")
+                pelanggan.alamat = getSafeString(myReader, "alamat")
+                pelanggan.noTelepon = getSafeString(myReader, "notelepon")
+                pelanggan.noKtp = getSafeString(myReader, "noktp")
+
+                pelanggans.Add(pelanggan)
+            End While
+
+            myConnection.Close()
+
+        Catch ex As Exception
+            MsgBox("Terjadi kesalahan : " + ex.Message)
+        Finally
+            search = pelanggans
+        End Try
+    End Function
+
 End Class

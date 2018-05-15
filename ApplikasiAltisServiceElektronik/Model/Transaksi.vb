@@ -422,4 +422,98 @@
 
         totalHarga = total
     End Function
+
+    Public Shared Function getYearAllTransaksi() As List(Of String)
+        Dim Strings As New List(Of String)
+
+        Try
+            Dim connection As New OleDbConnection(appPathDatabase)
+            connection.Open()
+
+            Dim reader As New OleDbCommand("Select distinct(year(tanggal_masuk)) as tahun from transaksi", connection)
+            Dim data As OleDbDataReader = reader.ExecuteReader()
+
+            While data.Read
+                Strings.Add(CStr(data.GetInt16(data.GetOrdinal("tahun"))))
+            End While
+
+            connection.Close()
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
+
+        getYearAllTransaksi = Strings
+    End Function
+
+    Public Shared Function getMonthTransaksi(year As Integer) As List(Of Int16)
+        Dim Strings As New List(Of Int16)
+
+        Try
+
+            Dim connection As New OleDbConnection(appPathDatabase)
+            connection.Open()
+
+            Dim stm As String = "Select distinct(month(tanggal_masuk)) as bulan from transaksi where year(tanggal_masuk) = " & year
+
+            Dim reader As New OleDbCommand(stm, connection)
+            Dim Data As OleDbDataReader = reader.ExecuteReader()
+
+            While Data.Read
+                Strings.Add(Data.GetInt16(Data.GetOrdinal("bulan")))
+            End While
+
+            connection.Close()
+
+        Catch EX As Exception
+            Console.WriteLine(EX.Message)
+        End Try
+        getMonthTransaksi = Strings
+    End Function
+
+    Public Shared Function search(text As String) As List(Of Transaksi)
+        Dim transaksis As New List(Of Transaksi)
+
+        Dim connection As New OleDbConnection(appPathDatabase)
+        connection.Open()
+
+        Dim query As String = ""
+
+        query = "select transaksi.* from transaksi inner join pelanggan on pelanggan.id = transaksi.pelanggan "
+        query += " where transaksi.id & "" like '" & text & "' or  transaksi.pelanggan & "" like '" & text & "' or pelanggan.nama like '%" & text & "%'"
+
+        Console.WriteLine(query)
+
+        Dim reader As New OleDbCommand(query, connection)
+
+        Dim myReader As OleDbDataReader = reader.ExecuteReader()
+
+        While myReader.Read()
+            Dim transaksi As New Transaksi
+
+                transaksi.id = getSafeInt32(myReader, "id")
+                transaksi.id_pelanggan = getSafeInt32(myReader, "pelanggan")
+                transaksi.merek = getSafeString(myReader, "merek")
+                transaksi.type = getSafeString(myReader, "type")
+                transaksi.serial_number = getSafeString(myReader, "serial_number")
+                transaksi.kelengkapan = getSafeString(myReader, "kelengkapan")
+                transaksi.keluhan = getSafeString(myReader, "keluhan")
+                transaksi.catatan = getSafeString(myReader, "catatan")
+                transaksi.tanggal_masuk = getSafeDate(myReader, "tanggal_masuk")
+                transaksi.jenis_kerusakan = getSafeString(myReader, "jenis")
+                transaksi.bayar = getSafeInt32(myReader, "bayar")
+                transaksi.total = getSafeInt32(myReader, "total")
+                transaksi.kembalian = getSafeInt32(myReader, "kembalian")
+                transaksi.tanggal_keluar = getSafeDate(myReader, "tanggal_keluar")
+
+                transaksi.pelanggan = Pelanggan.show(transaksi.id_pelanggan)
+                transaksi.detail_transaksi = DetailTransaksi.all(transaksi.id)
+
+                transaksis.Add(transaksi)
+            End While
+
+            connection.Close()
+
+            search = transaksis
+    End Function
+
 End Class

@@ -44,4 +44,14 @@
     Private Sub btnBatal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBatal.Click
         Me.Close()
     End Sub
+
+    Private Sub RadioButtonTanpaKeamanan_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonTanpaKeamanan.CheckedChanged
+        If RadioButtonMenggunakanKeamanan.Checked Then
+            txtPengguna.Enabled = True
+            txtPassword.Enabled = True
+        Else
+            txtPengguna.Enabled = False
+            txtPassword.Enabled = False
+        End If
+    End Sub
 End Class
