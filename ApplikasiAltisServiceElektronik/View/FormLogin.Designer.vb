@@ -92,9 +92,12 @@ Partial Class FormLogin
         Me.Controls.Add(Me.txtPengguna)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FormLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Login Karyawan"
+        Me.Text = "Login"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

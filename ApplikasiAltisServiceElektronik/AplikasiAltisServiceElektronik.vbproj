@@ -116,6 +116,7 @@
       <DependentUpon>CRTransaksi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Model\JenisKerusakan.vb" />
     <Compile Include="Model\Konfigurasi.vb" />
     <Compile Include="Model\DetailTransaksi.vb" />
     <Compile Include="Model\Transaksi.vb" />
@@ -130,6 +131,12 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Module\GlobalReport.vb" />
+    <Compile Include="View\FormJenisKerusakan.Designer.vb">
+      <DependentUpon>FormJenisKerusakan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormJenisKerusakan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FormLaporanTransaksi.Designer.vb">
       <DependentUpon>FormLaporanTransaksi.vb</DependentUpon>
     </Compile>
@@ -232,6 +239,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRTransaksi.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormJenisKerusakan.resx">
+      <DependentUpon>FormJenisKerusakan.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormLaporanPelanggan.resx">
       <DependentUpon>FormLaporanPelanggan.vb</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +287,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

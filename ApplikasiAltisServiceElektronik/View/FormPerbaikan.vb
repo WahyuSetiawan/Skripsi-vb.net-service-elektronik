@@ -41,7 +41,10 @@ Public Class FormPerbaikan
             Me.txtDibayarkan.Text = transaksi.bayar
             Me.txtSisaPembayaran.Text = transaksi.kembalian
 
-            Me.cmbJenisKerusakan.Text = transaksi.jenis_kerusakan
+            'Me.cmbJenisKerusakan.Text = transaksi.jenis_kerusakan
+
+            Me.lblJenisKerusakan.Text = CStr(Me.transaksi.jenis_kerusakan.id) + " " + Me.transaksi.jenis_kerusakan.JenisKerusakana
+            Me.lblAsumsiPerbaikan.Text = Me.transaksi.jenis_kerusakan.Biaya
 
             If Me.transaksi.tanggal_keluar = Nothing Then
 
@@ -83,12 +86,12 @@ Public Class FormPerbaikan
     End Sub
 
     Sub loadComboBox()
-        Me.cmbJenisKerusakan.Items.Clear()
-        Me.cmbJenisKerusakan.Items.Add("Kerusakan Ringan")
-        Me.cmbJenisKerusakan.Items.Add("Kerusakan Sedang")
-        Me.cmbJenisKerusakan.Items.Add("Kerusakan Berat")
+        'Me.cmbJenisKerusakan.Items.Clear()
+        'Me.cmbJenisKerusakan.Items.Add("Kerusakan Ringan")
+        'Me.cmbJenisKerusakan.Items.Add("Kerusakan Sedang")
+        'Me.cmbJenisKerusakan.Items.Add("Kerusakan Berat")
 
-        If Me.cmbJenisKerusakan.Text = "" Then Me.cmbJenisKerusakan.Text = "Kerusakan Ringan"
+        'If Me.cmbJenisKerusakan.Text = "" Then Me.cmbJenisKerusakan.Text = "Kerusakan Ringan"
     End Sub
 
     Sub kosong()
@@ -97,7 +100,11 @@ Public Class FormPerbaikan
         Me.txtKelengkapan.Text = ""
         Me.txtMerek.Text = ""
         Me.txtSerialNumber.Text = ""
-        Me.cmbJenisKerusakan.ResetText()
+
+        Me.lblAsumsiPerbaikan.Text = ""
+        Me.lblJenisKerusakan.Text = ""
+        Me.lblNamaPelanggan.Text = ""
+        'Me.cmbJenisKerusakan.ResetText()
     End Sub
 
     Sub kosongdetail()
@@ -116,11 +123,11 @@ Public Class FormPerbaikan
             ListViewDetailTransaksi.MultiSelect = False
             ListViewDetailTransaksi.FullRowSelect = True
 
-            .Columns.Add("No")
-            .Columns.Add("ID")
-            .Columns.Add("Perihal")
-            .Columns.Add("Satuan")
-            .Columns.Add("Harga")
+            .Columns.Add("No", 10)
+            .Columns.Add("ID", 40)
+            .Columns.Add("Perihal", 100)
+            .Columns.Add("Satuan", 100)
+            .Columns.Add("Harga", 100)
         End With
     End Sub
 
@@ -201,6 +208,10 @@ Public Class FormPerbaikan
         If jawab = vbYes Then
             If transaksi.removeDetailTransaksi(index) Then
                 ListViewDetailTransaksi.Items(index).Remove()
+
+                kosongdetail()
+
+                btnTambahDetail.Text = "Tambah"
             Else
                 MsgBox("Tidak dapat menghapus data Detail Transaksi")
             End If
@@ -209,14 +220,7 @@ Public Class FormPerbaikan
 
     Private Sub txtDibayarkan_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDibayarkan.TextChanged
         If IsNumeric(txtDibayarkan.Text) And IsNumeric(txtTotalHarga.Text) Then
-            txtSisaPembayaran.Text = Integer.Parse(txtDibayarkan.Text) - Integer.Parse(txtTotalHarga.Text)
-        End If
-    End Sub
-
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnHapus.Click
-        Dim jawab As String = MsgBox("Anda yakin menghapus transaksi ini ? ", vbYesNo, "Peringatan")
-        If jawab = vbYes Then
-            transaksi.delete()
+            txtSisaPembayaran.Text = Double.Parse(txtDibayarkan.Text) - Double.Parse(txtTotalHarga.Text)
         End If
     End Sub
 
@@ -226,7 +230,8 @@ Public Class FormPerbaikan
             transaksi.merek = txtMerek.Text
             transaksi.type = txtType.Text
             transaksi.serial_number = txtSerialNumber.Text
-            transaksi.jenis_kerusakan = cmbJenisKerusakan.Text
+            'transaksi.jenis_kerusakan = cmbJenisKerusakan.Text
+            transaksi.jenis_kerusakan = transaksi.jenis_kerusakan
             transaksi.kelengkapan = txtKelengkapan.Text
             transaksi.keluhan = txtKeluhan.Text
             transaksi.catatan = txtCatatan.Text
@@ -255,7 +260,8 @@ Public Class FormPerbaikan
                     transaksi.merek = txtMerek.Text
                     transaksi.type = txtType.Text
                     transaksi.serial_number = txtSerialNumber.Text
-                    transaksi.jenis_kerusakan = cmbJenisKerusakan.Text
+                    'transaksi.jenis_kerusakan = cmbJenisKerusakan.Text
+                    transaksi.jenis_kerusakan = transaksi.jenis_kerusakan
                     transaksi.kelengkapan = txtKelengkapan.Text
                     transaksi.keluhan = txtKeluhan.Text
                     transaksi.catatan = txtCatatan.Text
@@ -266,17 +272,27 @@ Public Class FormPerbaikan
 
                     If transaksi.update() Then
                         MsgBox("Berhasil menyimpan data transaksi")
+
+                        Me.Close()
+
+                        Dim formLaporanNota As New LaporanNota(Me, transaksi.id)
+                        formLaporanNota.MdiParent = formMenutUtama
+                        formLaporanNota.Show()
+
+                        formDaftarKerusakan.changeList(baris, transaksi)
                     Else
                         MsgBox("Menyimpan data transaksi gagal")
                     End If
                 Else
                     MsgBox("Tidak berhasil menyimpan data")
                 End If
-        End Select
+            Case "Cetak"
+                Dim formLaporanNota As New LaporanNota(Me, transaksi.id)
+                formLaporanNota.MdiParent = formMenutUtama
+                formLaporanNota.Show()
 
-        Dim formLaporanNota As New LaporanNota(Me, transaksi.id)
-        formLaporanNota.MdiParent = formMenutUtama
-        formLaporanNota.Show()
+                formDaftarKerusakan.changeList(baris, transaksi)
+        End Select
     End Sub
 
     Sub changeColumnListDetail(index As Integer, detailTransaksi As DetailTransaksi)
@@ -300,22 +316,21 @@ Public Class FormPerbaikan
         formValidation = True
 
         If idPelanggan = 0 Then GoTo ErrorResult
-        If Not FormIsNull(txtMerek, "merek") Then GoTo ErrorResult
+        If FormIsNull(txtMerek, "merek") Then GoTo ErrorResult
 
-        If Not FormIsNumeric(txtSisaPembayaran, "pembayaran") Then GoTo ErrorResult
-        If Not FormIsNull(txtSisaPembayaran, "pembayaran") Then GoTo ErrorResult
-        If Not costumFormMin(txtSisaPembayaran, 0, "pembayaran") Then GoTo ErrorResult
+        If FormIsNumeric(txtSisaPembayaran, "pembayaran") Then GoTo ErrorResult
+        If FormIsNull(txtSisaPembayaran, "pembayaran") Then GoTo ErrorResult
+        If costumFormMin(txtSisaPembayaran, 0, "pembayaran") Then GoTo ErrorResult
 
-        If Not FormIsNumeric(txtTotalHarga, "total harga") Then GoTo ErrorResult
-        If Not FormIsNull(txtTotalHarga, "total harga") Then GoTo ErrorResult
-        If Not costumFormMin(txtTotalHarga, 0, "total harga") Then GoTo ErrorResult
+        If FormIsNumeric(txtTotalHarga, "total harga") Then GoTo ErrorResult
+        If FormIsNull(txtTotalHarga, "total harga") Then GoTo ErrorResult
+        If costumFormMin(txtTotalHarga, 0, "total harga") Then GoTo ErrorResult
 
-        If Not FormIsNumeric(txtDibayarkan, "dibayarkan") Then GoTo ErrorResult
-        If Not FormIsNull(txtDibayarkan, "dibayarkan") Then GoTo ErrorResult
-        If Not costumFormMin(txtSisaPembayaran, 0, "dibayarkan") Then GoTo ErrorResult
+        If FormIsNumeric(txtDibayarkan, "dibayarkan") Then GoTo ErrorResult
+        If FormIsNull(txtDibayarkan, "dibayarkan") Then GoTo ErrorResult
+        If costumFormMin(txtSisaPembayaran, 0, "dibayarkan") Then GoTo ErrorResult
 
         Exit Function
-
 ErrorResult:
         formValidation = False
         Exit Function
@@ -325,15 +340,15 @@ ErrorResult:
     Function formValidationDetail() As Boolean
         formValidationDetail = True
 
-        If Not FormIsNull(txtPerihal, "perihal") Then GoTo ErrorResult
+        If FormIsNull(txtPerihal, "perihal") Then GoTo ErrorResult
 
-        If Not FormIsNumeric(txtSatuan, "satuan") Then GoTo ErrorResult
-        If Not FormIsNull(txtSatuan, "satuan") Then GoTo ErrorResult
-        If Not costumFormMin(txtSatuan, 0, "satuan") Then GoTo ErrorResult
+        If FormIsNumeric(txtSatuan, "satuan") Then GoTo ErrorResult
+        If FormIsNull(txtSatuan, "satuan") Then GoTo ErrorResult
+        If costumFormMin(txtSatuan, 0, "satuan") Then GoTo ErrorResult
 
-        If Not FormIsNumeric(txtHarga, "harga") Then GoTo ErrorResult
-        If Not FormIsNull(txtHarga, "harga") Then GoTo ErrorResult
-        If Not costumFormMin(txtHarga, 0, "harga") Then GoTo ErrorResult
+        If FormIsNumeric(txtHarga, "harga") Then GoTo ErrorResult
+        If FormIsNull(txtHarga, "harga") Then GoTo ErrorResult
+        If costumFormMin(txtHarga, 0, "harga") Then GoTo ErrorResult
 
         Exit Function
 ErrorResult:
@@ -349,5 +364,9 @@ ErrorResult:
             Me.formDaftarKerusakan.remove(baris)
             Me.Close()
         End If
+    End Sub
+
+    Private Sub Label13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label13.Click
+
     End Sub
 End Class

@@ -34,8 +34,6 @@ Partial Class FormCheckAndRepair
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtMerek = New System.Windows.Forms.TextBox()
         Me.lblNamaPelanggan = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.cmbJenisKerusakan = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtKelengkapan = New System.Windows.Forms.TextBox()
@@ -43,6 +41,11 @@ Partial Class FormCheckAndRepair
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnBatal = New System.Windows.Forms.Button()
         Me.btnSimpan = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.btnJenisKerusakan = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblAsumsi = New System.Windows.Forms.Label()
+        Me.lblJenisKerusakan = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -50,7 +53,7 @@ Partial Class FormCheckAndRepair
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(15, 223)
+        Me.Label3.Location = New System.Drawing.Point(15, 281)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(46, 13)
         Me.Label3.TabIndex = 2
@@ -59,7 +62,7 @@ Partial Class FormCheckAndRepair
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 281)
+        Me.Label4.Location = New System.Drawing.Point(15, 339)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(44, 13)
         Me.Label4.TabIndex = 3
@@ -67,7 +70,7 @@ Partial Class FormCheckAndRepair
         '
         'txtKeluhan
         '
-        Me.txtKeluhan.Location = New System.Drawing.Point(113, 201)
+        Me.txtKeluhan.Location = New System.Drawing.Point(113, 259)
         Me.txtKeluhan.Multiline = True
         Me.txtKeluhan.Name = "txtKeluhan"
         Me.txtKeluhan.Size = New System.Drawing.Size(406, 52)
@@ -75,7 +78,7 @@ Partial Class FormCheckAndRepair
         '
         'txtCatatan
         '
-        Me.txtCatatan.Location = New System.Drawing.Point(113, 259)
+        Me.txtCatatan.Location = New System.Drawing.Point(113, 317)
         Me.txtCatatan.Multiline = True
         Me.txtCatatan.Name = "txtCatatan"
         Me.txtCatatan.Size = New System.Drawing.Size(406, 56)
@@ -90,8 +93,6 @@ Partial Class FormCheckAndRepair
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.txtMerek)
         Me.GroupBox1.Controls.Add(Me.lblNamaPelanggan)
-        Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.cmbJenisKerusakan)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
@@ -158,23 +159,6 @@ Partial Class FormCheckAndRepair
         Me.lblNamaPelanggan.TabIndex = 13
         Me.lblNamaPelanggan.Text = "Nama"
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(275, 21)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(85, 13)
-        Me.Label5.TabIndex = 12
-        Me.Label5.Text = "Jenis Kerusakan"
-        '
-        'cmbJenisKerusakan
-        '
-        Me.cmbJenisKerusakan.FormattingEnabled = True
-        Me.cmbJenisKerusakan.Location = New System.Drawing.Point(366, 18)
-        Me.cmbJenisKerusakan.Name = "cmbJenisKerusakan"
-        Me.cmbJenisKerusakan.Size = New System.Drawing.Size(121, 21)
-        Me.cmbJenisKerusakan.TabIndex = 2
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -195,7 +179,7 @@ Partial Class FormCheckAndRepair
         '
         'txtKelengkapan
         '
-        Me.txtKelengkapan.Location = New System.Drawing.Point(113, 142)
+        Me.txtKelengkapan.Location = New System.Drawing.Point(113, 200)
         Me.txtKelengkapan.Multiline = True
         Me.txtKelengkapan.Name = "txtKelengkapan"
         Me.txtKelengkapan.Size = New System.Drawing.Size(406, 52)
@@ -204,7 +188,7 @@ Partial Class FormCheckAndRepair
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(15, 164)
+        Me.Label7.Location = New System.Drawing.Point(15, 222)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(92, 13)
         Me.Label7.TabIndex = 11
@@ -214,7 +198,7 @@ Partial Class FormCheckAndRepair
         '
         Me.GroupBox2.Controls.Add(Me.btnBatal)
         Me.GroupBox2.Controls.Add(Me.btnSimpan)
-        Me.GroupBox2.Location = New System.Drawing.Point(18, 321)
+        Me.GroupBox2.Location = New System.Drawing.Point(18, 379)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(498, 57)
         Me.GroupBox2.TabIndex = 13
@@ -238,11 +222,62 @@ Partial Class FormCheckAndRepair
         Me.btnSimpan.Text = "Simpan"
         Me.btnSimpan.UseVisualStyleBackColor = True
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(15, 144)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(85, 13)
+        Me.Label9.TabIndex = 14
+        Me.Label9.Text = "Jenis Kerusakan"
+        '
+        'btnJenisKerusakan
+        '
+        Me.btnJenisKerusakan.Location = New System.Drawing.Point(113, 139)
+        Me.btnJenisKerusakan.Name = "btnJenisKerusakan"
+        Me.btnJenisKerusakan.Size = New System.Drawing.Size(30, 23)
+        Me.btnJenisKerusakan.TabIndex = 15
+        Me.btnJenisKerusakan.Text = "..."
+        Me.btnJenisKerusakan.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(15, 176)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(91, 13)
+        Me.Label10.TabIndex = 16
+        Me.Label10.Text = "Asumsi Perbaikan"
+        '
+        'lblAsumsi
+        '
+        Me.lblAsumsi.AutoSize = True
+        Me.lblAsumsi.Location = New System.Drawing.Point(113, 175)
+        Me.lblAsumsi.Name = "lblAsumsi"
+        Me.lblAsumsi.Size = New System.Drawing.Size(45, 13)
+        Me.lblAsumsi.TabIndex = 17
+        Me.lblAsumsi.Text = "Label11"
+        '
+        'lblJenisKerusakan
+        '
+        Me.lblJenisKerusakan.AutoSize = True
+        Me.lblJenisKerusakan.Location = New System.Drawing.Point(149, 144)
+        Me.lblJenisKerusakan.Name = "lblJenisKerusakan"
+        Me.lblJenisKerusakan.Size = New System.Drawing.Size(45, 13)
+        Me.lblJenisKerusakan.TabIndex = 18
+        Me.lblJenisKerusakan.Text = "Label12"
+        '
         'FormCheckAndRepair
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(528, 388)
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.ClientSize = New System.Drawing.Size(528, 444)
+        Me.Controls.Add(Me.lblJenisKerusakan)
+        Me.Controls.Add(Me.lblAsumsi)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.btnJenisKerusakan)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.txtKelengkapan)
         Me.Controls.Add(Me.Label7)
@@ -251,6 +286,9 @@ Partial Class FormCheckAndRepair
         Me.Controls.Add(Me.txtKeluhan)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FormCheckAndRepair"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CheckAndRepair"
@@ -266,8 +304,6 @@ Partial Class FormCheckAndRepair
     Friend WithEvents txtKeluhan As System.Windows.Forms.TextBox
     Friend WithEvents txtCatatan As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents cmbJenisKerusakan As System.Windows.Forms.ComboBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtSerialNumber As System.Windows.Forms.TextBox
@@ -282,4 +318,9 @@ Partial Class FormCheckAndRepair
     Friend WithEvents txtType As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents btnBatal As Button
+    Friend WithEvents Label9 As Label
+    Friend WithEvents btnJenisKerusakan As Button
+    Friend WithEvents Label10 As Label
+    Friend WithEvents lblAsumsi As Label
+    Friend WithEvents lblJenisKerusakan As Label
 End Class

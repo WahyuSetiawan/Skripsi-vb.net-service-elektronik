@@ -5,6 +5,7 @@ Imports CrystalDecisions.CrystalReports.Engine
 Module GlobalConnectionOledb
     Dim appPath As String = My.Application.Info.DirectoryPath
     Public appPathDatabase As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & appPath & "\Database\Database_reprasi.mdb"
+    Public appPathDatabaseReport As String = appPath & "\Database\Database_reprasi.mdb"
 
     Function LastInsertedID(cmd As OleDbCommand) As Integer
         cmd.CommandType = CommandType.Text

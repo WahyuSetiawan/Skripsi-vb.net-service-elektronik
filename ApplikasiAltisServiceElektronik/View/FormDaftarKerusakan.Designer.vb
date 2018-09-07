@@ -26,9 +26,11 @@ Partial Class FormDaftarKerusakan
         Me.btnTutup = New System.Windows.Forms.Button()
         Me.btnTransaksiBaru = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.txtCari = New System.Windows.Forms.TextBox()
-        Me.btnCari = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnCari = New System.Windows.Forms.Button()
+        Me.txtCari = New System.Windows.Forms.TextBox()
+        Me.cmbJenisType = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -53,7 +55,7 @@ Partial Class FormDaftarKerusakan
         '
         Me.btnTransaksiBaru.Location = New System.Drawing.Point(12, 295)
         Me.btnTransaksiBaru.Name = "btnTransaksiBaru"
-        Me.btnTransaksiBaru.Size = New System.Drawing.Size(75, 23)
+        Me.btnTransaksiBaru.Size = New System.Drawing.Size(97, 23)
         Me.btnTransaksiBaru.TabIndex = 2
         Me.btnTransaksiBaru.Text = "Transaksi Baru"
         Me.btnTransaksiBaru.UseVisualStyleBackColor = True
@@ -70,12 +72,14 @@ Partial Class FormDaftarKerusakan
         Me.Panel1.Size = New System.Drawing.Size(676, 34)
         Me.Panel1.TabIndex = 3
         '
-        'txtCari
+        'Label1
         '
-        Me.txtCari.Location = New System.Drawing.Point(51, 7)
-        Me.txtCari.Name = "txtCari"
-        Me.txtCari.Size = New System.Drawing.Size(515, 20)
-        Me.txtCari.TabIndex = 0
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(14, 11)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(31, 13)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Cari :"
         '
         'btnCari
         '
@@ -86,30 +90,53 @@ Partial Class FormDaftarKerusakan
         Me.btnCari.Text = "Cari"
         Me.btnCari.UseVisualStyleBackColor = True
         '
-        'Label1
+        'txtCari
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(14, 11)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(31, 13)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Cari :"
+        Me.txtCari.Location = New System.Drawing.Point(51, 7)
+        Me.txtCari.Name = "txtCari"
+        Me.txtCari.Size = New System.Drawing.Size(515, 20)
+        Me.txtCari.TabIndex = 0
+        '
+        'cmbJenisType
+        '
+        Me.cmbJenisType.FormattingEnabled = True
+        Me.cmbJenisType.Location = New System.Drawing.Point(210, 295)
+        Me.cmbJenisType.Name = "cmbJenisType"
+        Me.cmbJenisType.Size = New System.Drawing.Size(151, 21)
+        Me.cmbJenisType.Sorted = True
+        Me.cmbJenisType.TabIndex = 4
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(120, 300)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(83, 13)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "Jenis Tampilan :"
         '
         'FormDaftarKerusakan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(700, 335)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.cmbJenisType)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnTransaksiBaru)
         Me.Controls.Add(Me.btnTutup)
         Me.Controls.Add(Me.ListView1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FormDaftarKerusakan"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Daftar Transaksi"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
@@ -119,4 +146,6 @@ Partial Class FormDaftarKerusakan
     Friend WithEvents btnCari As Button
     Friend WithEvents txtCari As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents cmbJenisType As ComboBox
+    Friend WithEvents Label2 As Label
 End Class

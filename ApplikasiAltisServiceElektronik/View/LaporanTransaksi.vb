@@ -23,6 +23,23 @@ Public Class LaporanTransaksi
         If Not pathLaporan = "" Then
             cryRpt.Load(pathLaporan)
 
+            Dim connection As New ConnectionInfo
+            Dim tables As Tables
+            Dim table As Table
+            Dim logon As New TableLogOnInfo
+
+            connection.ServerName = appPathDatabaseReport
+            connection.UserID = ""
+            connection.Password = ""
+            connection.DatabaseName = ""
+
+            tables = cryRpt.Database.Tables
+            For Each table In tables
+                logon = table.LogOnInfo
+                logon.ConnectionInfo = connection
+                table.ApplyLogOnInfo(logon)
+            Next
+
             Dim cryParameterFieldDefinitions As ParameterFieldDefinitions
             Dim cryParameterFieldDefinitiontahun As ParameterFieldDefinition
             Dim cryParameterFieldDefinitionbulan As ParameterFieldDefinition

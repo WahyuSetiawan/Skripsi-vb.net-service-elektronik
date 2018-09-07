@@ -63,6 +63,9 @@ Partial Class FormLaporanPelanggan
         Me.Controls.Add(Me.btnBatal)
         Me.Controls.Add(Me.btnOK)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FormLaporanPelanggan"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "LaporanPelanggan"

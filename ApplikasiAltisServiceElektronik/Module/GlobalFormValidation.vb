@@ -2,11 +2,11 @@
     Function FormIsNumeric(view As Object, a As Object) As Boolean
 
         If IsNumeric(view.text) Then
-            FormIsNumeric = True
+            FormIsNumeric = False
         Else
             MsgBox("Field " & a & " harus berupa angka")
             view.Focus()
-            FormIsNumeric = False
+            FormIsNumeric = True
         End If
 
         Console.WriteLine("form is numeric : " & a & FormIsNumeric)
@@ -14,11 +14,11 @@
 
     Function FormIsNull(view As Object, a As Object) As Boolean
         If Not view.text = "" Then
-            FormIsNull = True
+            FormIsNull = False
         Else
             MsgBox("Field " & a & " tidak boleh kosong")
             view.Focus()
-            FormIsNull = False
+            FormIsNull = True
         End If
 
         Console.WriteLine("form id null : " & a & FormIsNull)
@@ -26,11 +26,11 @@
 
     Function costumFormMin(view As Object, min As Integer, a As Object) As Boolean
         If Not Integer.Parse(view.text) < min Then
-            costumFormMin = True
+            costumFormMin = False
         Else
             MsgBox("Field " & a & " mininal " & min)
             view.Focus()
-            costumFormMin = False
+            costumFormMin = True
         End If
 
         Console.WriteLine("form id min : " & a & costumFormMin)

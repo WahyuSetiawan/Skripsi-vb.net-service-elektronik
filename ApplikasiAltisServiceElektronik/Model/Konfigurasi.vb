@@ -3,11 +3,11 @@
     Private passwordKonf As String = "password"
     Private keamananKonf As String = "keamanan"
 
-    Function selectKonfigurationBoolean(ByVal konfiguration As String) As Boolean
+    Public Shared Function selectKonfigurationBoolean(ByVal konfiguration As String) As Boolean
         Dim connectionSelect As New OleDbConnection(appPathDatabase)
         connectionSelect.Open()
 
-        Dim command As New OleDbCommand("select * from configurasi where konfigurasi = @konfigurasi", connectionSelect)
+        Dim command As New OleDbCommand("select * from konfigurasi where konfigurasi = @konfigurasi", connectionSelect)
 
         command.Parameters.AddWithValue("@konfigurasi", konfiguration)
 
@@ -21,11 +21,11 @@
         End If
     End Function
 
-    Function selectKonfiguration(ByVal konfiguration As String) As String
+    Public Shared Function selectKonfiguration(ByVal konfiguration As String) As String
         Dim connectionSelect As New OleDbConnection(appPathDatabase)
         connectionSelect.Open()
 
-        Dim command As New OleDbCommand("select * from configurasi where konfigurasi = @konfigurasi", connectionSelect)
+        Dim command As New OleDbCommand("select * from konfigurasi where konfigurasi = @konfigurasi", connectionSelect)
 
         command.Parameters.AddWithValue("@konfigurasi", konfiguration)
 
@@ -40,11 +40,11 @@
     End Function
 
 
-    Function insertConfig(ByVal konfigurasi As String, ByVal value As String) As Integer
+    Public Shared Function insertConfig(ByVal konfigurasi As String, ByVal value As String) As Integer
         Dim connection As New OleDbConnection(appPathDatabase)
         connection.Open()
 
-        Dim command As New OleDbCommand("select * from configurasi where konfigurasi = @konfigurasi", connection)
+        Dim command As New OleDbCommand("select * from konfigurasi where konfigurasi = @konfigurasi", connection)
 
         command.Parameters.AddWithValue("@konfigurasi", konfigurasi)
 
@@ -55,7 +55,7 @@
             Dim connectionUpdate As New OleDbConnection(appPathDatabase)
             connectionUpdate.Open()
 
-            Dim commandupdate As New OleDbCommand("update configurasi set nilai = '" & value & "' where konfigurasi = '" & konfigurasi & "'", connectionUpdate)
+            Dim commandupdate As New OleDbCommand("update konfigurasi set nilai = '" & value & "' where konfigurasi = '" & konfigurasi & "'", connectionUpdate)
 
             commandupdate.ExecuteNonQuery()
 
@@ -64,7 +64,7 @@
             Dim connectionInsert As New OleDbConnection(appPathDatabase)
             connectionInsert.Open()
 
-            Dim commmandInsert As New OleDbCommand("insert into configurasi (konfigurasi, nilai) values (@konfigurasi, @nilai)", connectionInsert)
+            Dim commmandInsert As New OleDbCommand("insert into konfigurasi (konfigurasi, nilai) values (@konfigurasi, @nilai)", connectionInsert)
 
             commmandInsert.Parameters.AddWithValue("@konfigurasi", konfigurasi)
             commmandInsert.Parameters.AddWithValue("@nilai", value)

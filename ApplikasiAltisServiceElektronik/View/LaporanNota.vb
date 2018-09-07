@@ -2,13 +2,13 @@
 Imports CrystalDecisions.Shared
 
 Public Class LaporanNota
-    Dim parentform As FormPerbaikan
+    Dim form As FormPerbaikan
     Dim transaksi As Transaksi
 
     Sub New(form As FormPerbaikan, id As Integer)
         InitializeComponent()
         transaksi = Transaksi.show(id)
-        Me.parentform = form
+        Me.form = form
     End Sub
 
     Private Sub FormLaporanNota_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -17,6 +17,23 @@ Public Class LaporanNota
 
         If Not pathLaporan = "" Then
             cryRpt.Load(pathLaporan)
+
+            Dim connection As New ConnectionInfo
+            Dim tables As Tables
+            Dim table As Table
+            Dim logon As New TableLogOnInfo
+
+            connection.ServerName = appPathDatabaseReport
+            connection.UserID = ""
+            connection.Password = ""
+            connection.DatabaseName = ""
+
+            tables = cryRpt.Database.Tables
+            For Each table In tables
+                logon = table.LogOnInfo
+                logon.ConnectionInfo = connection
+                table.ApplyLogOnInfo(logon)
+            Next
 
             Dim cryParameterFieldDefinitions As ParameterFieldDefinitions
             Dim cryParameterFieldDefinition As ParameterFieldDefinition

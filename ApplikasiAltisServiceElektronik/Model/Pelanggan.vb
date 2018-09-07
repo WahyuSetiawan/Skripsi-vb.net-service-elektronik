@@ -55,12 +55,11 @@
             Dim myConnection As New OleDbConnection(appPathDatabase)
             myConnection.Open()
 
-            Dim myCommmand As New OleDbCommand("Insert into pelanggan (nama, alamat, noktp, notelepon) values (@nama, @alamat, @noktp, @notelepon)", myConnection)
+            Dim query As String
 
-            myCommmand.Parameters.AddWithValue("@nama", _nama)
-            myCommmand.Parameters.AddWithValue("@alamat", _alamat)
-            myCommmand.Parameters.AddWithValue("@noktp", _noKtp)
-            myCommmand.Parameters.AddWithValue("@notelepon", noTelepon)
+            query = "Insert into pelanggan (nama, alamat, noktp, notelepon) values ('" & _nama & "', '" & _alamat & "', '" & _noKtp & "', '" & _noTelepon & "')"
+
+            Dim myCommmand As New OleDbCommand(query, myConnection)
 
             myCommmand.ExecuteNonQuery()
 
@@ -76,29 +75,27 @@
         End Try
     End Function
 
-    Function update(id As Integer) As Boolean
+    Function update(id As Int32) As Boolean
         update = False
 
-        Try
-            Dim myConnection As New OleDbConnection(appPathDatabase)
-            myConnection.Open()
 
-            Dim myCommand As New OleDbCommand("update pelanggan set nama = @nama, alamat = @alamat, notelepon = @notelepon, noktp = @noktp where id = @id", myConnection)
+        Dim myConnection As New OleDbConnection(appPathDatabase)
+        myConnection.Open()
 
-            myCommand.Parameters.AddWithValue("@id", id)
-            myCommand.Parameters.AddWithValue("@nama", _nama)
-            myCommand.Parameters.AddWithValue("@alamat", _alamat)
-            myCommand.Parameters.AddWithValue("@noktp", _noKtp)
-            myCommand.Parameters.AddWithValue("@notelepon", _noTelepon)
+        Dim query As String
 
-            myCommand.ExecuteNonQuery()
+        query = "update pelanggan set nama = '" & _nama & "', alamat = '" & _alamat & "', notelepon = '" & _noTelepon & "', noktp = '" & _noKtp & "' where id = " & id
 
-            myConnection.Close()
+        Console.Write(query)
 
-            update = True
-        Catch ex As Exception
-            MsgBox("Terjadi kesalahan : " & ex.Message)
-        End Try
+        Dim myCommand As New OleDbCommand(query, myConnection)
+
+        myCommand.ExecuteNonQuery()
+
+        myConnection.Close()
+
+        update = True
+
     End Function
 
     Public Shared Function show(id As Integer) As Pelanggan

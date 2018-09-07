@@ -26,16 +26,12 @@ Partial Class FormMenuUtama
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PelangganToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LogOut = New System.Windows.Forms.ToolStripMenuItem()
         Me.PelangganToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KonfigusiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanPelangganToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanTransaksiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,43 +49,12 @@ Partial Class FormMenuUtama
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem, Me.PelangganToolStripMenuItem, Me.KonfigusiToolStripMenuItem, Me.LaporanToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PelangganToolStripMenuItem, Me.KonfigusiToolStripMenuItem, Me.LaporanToolStripMenuItem, Me.LogoutToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1100, 24)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'MenuToolStripMenuItem
-        '
-        Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator1, Me.FileToolStripMenuItem, Me.LogOut})
-        Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
-        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
-        Me.MenuToolStripMenuItem.Text = "Menu"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(109, 6)
-        '
-        'FileToolStripMenuItem
-        '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PelangganToolStripMenuItem1})
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
-        Me.FileToolStripMenuItem.Text = "File"
-        '
-        'PelangganToolStripMenuItem1
-        '
-        Me.PelangganToolStripMenuItem1.Name = "PelangganToolStripMenuItem1"
-        Me.PelangganToolStripMenuItem1.Size = New System.Drawing.Size(130, 22)
-        Me.PelangganToolStripMenuItem1.Text = "Pelanggan"
-        '
-        'LogOut
-        '
-        Me.LogOut.Name = "LogOut"
-        Me.LogOut.Size = New System.Drawing.Size(112, 22)
-        Me.LogOut.Text = "Logout"
         '
         'PelangganToolStripMenuItem
         '
@@ -122,6 +87,12 @@ Partial Class FormMenuUtama
         Me.LaporanTransaksiToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.LaporanTransaksiToolStripMenuItem.Text = "Laporan Transaksi"
         '
+        'LogoutToolStripMenuItem
+        '
+        Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
+        Me.LogoutToolStripMenuItem.Text = "Logout"
+        '
         'FileSystemWatcher1
         '
         Me.FileSystemWatcher1.EnableRaisingEvents = True
@@ -148,15 +119,11 @@ Partial Class FormMenuUtama
     Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents ContextMenuStrip2 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
-    Friend WithEvents MenuToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents LogOut As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PelangganToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PelangganToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents KonfigusiToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
     Friend WithEvents LaporanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanPelangganToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanTransaksiToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LogoutToolStripMenuItem As ToolStripMenuItem
 End Class

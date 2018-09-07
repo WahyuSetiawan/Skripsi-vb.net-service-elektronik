@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormPelanggan
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FormPelanggan
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.PelangganBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -42,9 +42,9 @@ Partial Class FormPelanggan
         Me.btnUbah = New System.Windows.Forms.Button()
         Me.btnTambah = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtCari = New System.Windows.Forms.TextBox()
         Me.btnCari = New System.Windows.Forms.Button()
+        Me.txtCari = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.PelangganBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -220,22 +220,6 @@ Partial Class FormPelanggan
         Me.Panel1.Size = New System.Drawing.Size(572, 28)
         Me.Panel1.TabIndex = 17
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(7, 8)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(25, 13)
-        Me.Label6.TabIndex = 0
-        Me.Label6.Text = "Cari"
-        '
-        'txtCari
-        '
-        Me.txtCari.Location = New System.Drawing.Point(38, 4)
-        Me.txtCari.Name = "txtCari"
-        Me.txtCari.Size = New System.Drawing.Size(449, 20)
-        Me.txtCari.TabIndex = 1
-        '
         'btnCari
         '
         Me.btnCari.Location = New System.Drawing.Point(493, 3)
@@ -244,6 +228,22 @@ Partial Class FormPelanggan
         Me.btnCari.TabIndex = 2
         Me.btnCari.Text = "Cari"
         Me.btnCari.UseVisualStyleBackColor = True
+        '
+        'txtCari
+        '
+        Me.txtCari.Location = New System.Drawing.Point(38, 4)
+        Me.txtCari.Name = "txtCari"
+        Me.txtCari.Size = New System.Drawing.Size(449, 20)
+        Me.txtCari.TabIndex = 1
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(7, 8)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(25, 13)
+        Me.Label6.TabIndex = 0
+        Me.Label6.Text = "Cari"
         '
         'FormPelanggan
         '
@@ -254,6 +254,9 @@ Partial Class FormPelanggan
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ListView1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FormPelanggan"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pelanggan"

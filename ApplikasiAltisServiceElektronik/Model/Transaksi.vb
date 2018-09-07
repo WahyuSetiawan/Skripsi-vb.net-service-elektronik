@@ -8,7 +8,7 @@
     Private _keluhan As String
     Private _catatan As String
     Private _tanggal_masuk As Date
-    Private _jenis_kerusakan As String
+    Private _jenis_kerusakan As JenisKerusakan
     Private _total As Integer
     Private _bayar As Integer
     Private _kembalian As Integer
@@ -108,11 +108,11 @@
             _tanggal_masuk = value
         End Set
     End Property
-    Public Property jenis_kerusakan As String
+    Public Property jenis_kerusakan As JenisKerusakan
         Get
             Return _jenis_kerusakan
         End Get
-        Set(value As String)
+        Set(value As JenisKerusakan)
             _jenis_kerusakan = value
         End Set
     End Property
@@ -172,31 +172,32 @@
                 " where id = @id"
 
         query = query.Replace("@pelanggan", _id_pelanggan)
-            query = query.Replace("@merek", _merek)
-            query = query.Replace("@type", _type)
-            query = query.Replace("@serial_number", _serial_number)
-            query = query.Replace("@jenis", _jenis_kerusakan)
-            query = query.Replace("@kelengkapan", _kelengkapan)
-            query = query.Replace("@keluhan", _keluhan)
-            query = query.Replace("@catatan", _catatan)
-            query = query.Replace("@bayar", _bayar)
-            query = query.Replace("@kembalian", _kembalian)
+        query = query.Replace("@merek", _merek)
+        query = query.Replace("@type", _type)
+        query = query.Replace("@serial_number", _serial_number)
+        query = query.Replace("@jenis", _jenis_kerusakan.id)
+        query = query.Replace("@kelengkapan", _kelengkapan)
+        query = query.Replace("@keluhan", _keluhan)
+        query = query.Replace("@catatan", _catatan)
+        query = query.Replace("@bayar", _bayar)
+        query = query.Replace("@kembalian", _kembalian)
 
-            If _tanggal_keluar = Nothing Then
+        If _tanggal_keluar = Nothing Then
             query = query.Replace("@tanggal_keluar", "null")
         Else
             query = query.Replace("@tanggal_keluar", "'" & _tanggal_keluar & "'")
         End If
-            query = query.Replace("@total", _total)
-            query = query.Replace("@id", _id)
 
-            Console.WriteLine(query)
+        query = query.Replace("@total", _total)
+        query = query.Replace("@id", _id)
 
-            Dim cmd As New OleDbCommand(query, conn)
-            cmd.ExecuteNonQuery()
+        Console.WriteLine(query)
 
-            conn.Close()
-            update = True
+        Dim cmd As New OleDbCommand(query, conn)
+        cmd.ExecuteNonQuery()
+
+        conn.Close()
+        update = True
         'Catch ex As Exception
         '    MsgBox("terjadi kesalahan :  " + ex.Message)
         'End Try
@@ -220,7 +221,7 @@
             query = query.Replace("@merek", _merek)
             query = query.Replace("@type", _type)
             query = query.Replace("@serial_number", _serial_number)
-            query = query.Replace("@jenis", _jenis_kerusakan)
+            query = query.Replace("@jenis", _jenis_kerusakan.id)
             query = query.Replace("@kelengkapan", _kelengkapan)
             query = query.Replace("@keluhan", _keluhan)
             query = query.Replace("@catatan", _catatan)
@@ -242,47 +243,16 @@
 
     End Function
 
+    Public Shared Function showActiveTransaksi() As List(Of Transaksi)
+        showActiveTransaksi = selectTransaksi(" where tanggal_keluar is null")
+    End Function
+
+    Public Shared Function showNotActiveTransaksi() As List(Of Transaksi)
+        showNotActiveTransaksi = selectTransaksi(" where tanggal_keluar is not null")
+    End Function
+
     Public Shared Function all() As List(Of Transaksi)
-        Dim transaksis As New List(Of Transaksi)
-
-        Try
-            Dim myConnecion As New OleDbConnection(appPathDatabase)
-            myConnecion.Open()
-
-            Dim myCommand As New OleDbCommand("Select * from transaksi", myConnecion)
-
-            Dim myReader As OleDbDataReader = myCommand.ExecuteReader
-
-            While (myReader.Read())
-                Dim transaksi As New Transaksi
-
-                transaksi.id = getSafeInt32(myReader, "id")
-                transaksi.id_pelanggan = getSafeInt32(myReader, "pelanggan")
-                transaksi.merek = getSafeString(myReader, "merek")
-                transaksi.type = getSafeString(myReader, "type")
-                transaksi.serial_number = getSafeString(myReader, "serial_number")
-                transaksi.kelengkapan = getSafeString(myReader, "kelengkapan")
-                transaksi.keluhan = getSafeString(myReader, "keluhan")
-                transaksi.catatan = getSafeString(myReader, "catatan")
-                transaksi.tanggal_masuk = getSafeDate(myReader, "tanggal_masuk")
-                transaksi.jenis_kerusakan = getSafeString(myReader, "jenis")
-                transaksi.bayar = getSafeInt32(myReader, "bayar")
-                transaksi.total = getSafeInt32(myReader, "total")
-                transaksi.kembalian = getSafeInt32(myReader, "kembalian")
-                transaksi.tanggal_keluar = getSafeDate(myReader, "tanggal_keluar")
-
-                transaksi.pelanggan = Pelanggan.show(transaksi.id_pelanggan)
-                transaksi.detail_transaksi = DetailTransaksi.all(transaksi.id)
-
-                transaksis.Add(transaksi)
-            End While
-
-            myConnecion.Close()
-        Catch ex As Exception
-            MsgBox("Terdapat Kesalahan : " & ex.Message)
-        End Try
-
-        all = transaksis
+        all = selectTransaksi("")
     End Function
 
     Public Shared Function show(id As Integer) As Transaksi
@@ -311,7 +281,7 @@
                 transaksi.keluhan = getSafeString(myReader, "keluhan")
                 transaksi.catatan = getSafeString(myReader, "catatan")
                 transaksi.tanggal_masuk = getSafeDate(myReader, "tanggal_masuk")
-                transaksi.jenis_kerusakan = getSafeString(myReader, "jenis")
+                transaksi.jenis_kerusakan = JenisKerusakan.show(getSafeInt32(myReader, "jenis"))
                 transaksi.bayar = getSafeInt32(myReader, "bayar")
                 transaksi.total = getSafeInt32(myReader, "total")
                 transaksi.kembalian = getSafeInt32(myReader, "kembalian")
@@ -449,7 +419,6 @@
         Dim Strings As New List(Of Int16)
 
         Try
-
             Dim connection As New OleDbConnection(appPathDatabase)
             connection.Open()
 
@@ -470,25 +439,45 @@
         getMonthTransaksi = Strings
     End Function
 
+    Public Shared Function searchNotActive(text As String) As List(Of Transaksi)
+        Dim query As String
+
+        query = " where tanggal_keluar is null"
+        query += " and (transaksi.id & "" like '" & text & "' or  transaksi.pelanggan & "" like '" & text & "' or pelanggan.nama like '%" & text & "%')"
+
+        searchNotActive = selectTransaksi(query)
+    End Function
+
+    Public Shared Function searchActive(text As String) As List(Of Transaksi)
+        Dim query As String
+
+        query = " where tanggal_keluar is not null"
+        query += " and (transaksi.id & "" like '" & text & "' or  transaksi.pelanggan & "" like '" & text & "' or pelanggan.nama like '%" & text & "%')"
+
+        searchActive = selectTransaksi(query)
+    End Function
+
+
     Public Shared Function search(text As String) As List(Of Transaksi)
+        search = selectTransaksi(" where transaksi.id & "" like '" & text & "' or  transaksi.pelanggan & "" like '" & text & "' or pelanggan.nama like '%" & text & "%'")
+    End Function
+
+    Private Shared Function selectTransaksi(queryPencarian As String) As List(Of Transaksi)
         Dim transaksis As New List(Of Transaksi)
+        Try
+            Dim conn As New OleDbConnection(appPathDatabase)
+            conn.Open()
 
-        Dim connection As New OleDbConnection(appPathDatabase)
-        connection.Open()
+            Dim query As String = ""
 
-        Dim query As String = ""
+            query = "select transaksi.* from transaksi inner join pelanggan on pelanggan.id = transaksi.pelanggan "
+            query += queryPencarian
 
-        query = "select transaksi.* from transaksi inner join pelanggan on pelanggan.id = transaksi.pelanggan "
-        query += " where transaksi.id & "" like '" & text & "' or  transaksi.pelanggan & "" like '" & text & "' or pelanggan.nama like '%" & text & "%'"
+            Dim com As New OleDbCommand(query, conn)
+            Dim myReader As OleDbDataReader = com.ExecuteReader
 
-        Console.WriteLine(query)
-
-        Dim reader As New OleDbCommand(query, connection)
-
-        Dim myReader As OleDbDataReader = reader.ExecuteReader()
-
-        While myReader.Read()
-            Dim transaksi As New Transaksi
+            While myReader.Read()
+                Dim transaksi As New Transaksi
 
                 transaksi.id = getSafeInt32(myReader, "id")
                 transaksi.id_pelanggan = getSafeInt32(myReader, "pelanggan")
@@ -499,7 +488,7 @@
                 transaksi.keluhan = getSafeString(myReader, "keluhan")
                 transaksi.catatan = getSafeString(myReader, "catatan")
                 transaksi.tanggal_masuk = getSafeDate(myReader, "tanggal_masuk")
-                transaksi.jenis_kerusakan = getSafeString(myReader, "jenis")
+                transaksi.jenis_kerusakan = JenisKerusakan.show(getSafeInt32(myReader, "jenis"))
                 transaksi.bayar = getSafeInt32(myReader, "bayar")
                 transaksi.total = getSafeInt32(myReader, "total")
                 transaksi.kembalian = getSafeInt32(myReader, "kembalian")
@@ -511,9 +500,11 @@
                 transaksis.Add(transaksi)
             End While
 
-            connection.Close()
+            conn.Close()
+        Catch ex As Exception
 
-            search = transaksis
+        End Try
+
+        selectTransaksi = transaksis
     End Function
-
 End Class

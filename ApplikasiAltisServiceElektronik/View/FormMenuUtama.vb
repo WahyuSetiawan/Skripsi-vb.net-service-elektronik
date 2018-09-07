@@ -1,13 +1,11 @@
 ﻿Public Class FormMenuUtama
-    Private Sub LogOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LogOut.Click
-
-
+    Private Sub LogOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LogoutToolStripMenuItem.Click
         Me.Close()
     End Sub
 
-    Private Sub PelangganToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PelangganToolStripMenuItem1.Click
+    Private Sub PelangganToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Try
-            Dim form As New FormPelanggan
+            Dim form As New FormPelanggan(Me)
             form.MdiParent = Me
             form.Show()
         Catch ex As Exception
@@ -56,7 +54,7 @@
         End Try
     End Sub
 
-    Private Sub PelangganToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PelangganToolStripMenuItem.Click
+    Private Sub PelangganToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Try
             Dim form As New FormDaftarKerusakan(Me)
             form.MdiParent = Me
@@ -92,7 +90,7 @@
     End Sub
 
     Private Sub FormMenuUtama_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
-        If selectKonfigurationBoolean(keamananKonf) Then showFormLogin()
+        showFormLogin()
     End Sub
 
     Private Sub showFormLogin()
@@ -106,4 +104,23 @@
         MenuStrip1.Enabled = True
     End Sub
 
+    Private Sub JenisKerusakanToolStripMenuItem1_Click(sender As Object, e As EventArgs)
+        Try
+            Dim form As New FormJenisKerusakan(Me)
+            form.MdiParent = Me
+            form.Show()
+        Catch ex As Exception
+            MsgBox("Terjadi kesalahan : " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub PelangganToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles PelangganToolStripMenuItem.Click
+        Try
+            Dim menuUtama As New FormDaftarKerusakan(Me)
+            menuUtama.MdiParent = Me
+            menuUtama.Show()
+        Catch ex As Exception
+            MsgBox("Terjadi kesalahan : " & ex.Message)
+        End Try
+    End Sub
 End Class
